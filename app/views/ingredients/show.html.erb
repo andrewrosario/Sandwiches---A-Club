@@ -1,0 +1,4 @@
+<h1><%= @ingredient.name %></h1>
+<h2><%= @ingredient.type_of%></h1>
+<img src=<%= "/assets/images/#{@ingredient.img_url}" %> height="100" width="100">
+<%= link_to "Delete", @ingredient, method: :delete, data: { confirm: "Really?" } %>
