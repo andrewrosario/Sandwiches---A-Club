@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
     before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+    before_action :set_type_of, only: [:new, :create]
     def index
         @ingredients = Ingredient.all
     end
@@ -9,6 +10,7 @@ class IngredientsController < ApplicationController
 
     def new
         @ingredient = Ingredient.new
+
     end
 
     def create
@@ -32,8 +34,13 @@ class IngredientsController < ApplicationController
     end
 
     def destroy
-        @ingredient.destroy
-        redirect_to ingredients_path
+        if SandwichIngredient.find_by(ingredient_id: @ingredient.id)
+            flash[:message] = "You can't delete an ingredient that's in use in a sandwich."
+            return redirect_to @ingredient
+        else
+            @ingredient.destroy
+            return redirect_to ingredients_path
+        end
     end
 
     private
@@ -41,9 +48,13 @@ class IngredientsController < ApplicationController
     def set_ingredient
       @ingredient = Ingredient.find(params[:id])
     end
+    
+    def set_type_of
+      @categories = [['bread', 'bread'], ['filling', 'filling'], ['condiment', 'condiment']]
+    end
 
     def ingredient_params
-        params.require(:ingredient).permit(:name, :type_of, :img_url,
-        :is_meat, :is_dairy_or_egg, :is_gluten_free)
+      params.require(:ingredient).permit(:name, :type_of, :img_url,
+      :is_meat, :is_dairy_or_egg, :is_gluten_free)
     end
 end
