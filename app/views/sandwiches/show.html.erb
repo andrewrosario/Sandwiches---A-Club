@@ -1,0 +1,35 @@
+<h1><%= @sandwich.title %></h1>
+
+<img src=<%= "/assets/#{@sandwich.img_url}" %> height="100" width="100">
+<h2>Description:</h2>
+<p><%= @sandwich.description %>
+<h2>Ingredients:</h2>
+<ul>
+<%@sandwich.ingredients.each do |i|%>
+<li><%=i.name%></li>
+<%end%>
+</ul>
+
+<h2>Instructions:</h2>
+<p><%= @sandwich.instructions %>
+
+<h2>Comments:</h2>
+<%@sandwich.comments.each do |c|%>
+<div>
+    <h4><%= c.title%></h4>
+    <p><%= c.user.display_name %>, commented at: <%= c.created_at %></p>
+    <p><%= c.content %></p>
+    <% if !c.replies.empty? %>
+        <h4>Replies:</h4>
+    <% end %>
+    <%c.replies.each do |r|%>
+    <div>
+        <p><%=r.user.display_name %>, replied at: <%= c.created_at %></p>
+        <p><%= r.content %></p>
+    </div>
+    <% end %>
+    <%= render 'reply' %>
+</div>
+<% end %>
+
+<%= render 'comment_form' %>

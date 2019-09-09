@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_180950) do
+ActiveRecord::Schema.define(version: 2019_09_09_194409) do
 
   create_table "comments", force: :cascade do |t|
     t.string "title"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_09_09_180950) do
     t.string "img_url", default: "sandwich.jpg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,17 +6,5 @@ class Sandwich < ApplicationRecord
     has_many :ingredients, through: :sandwich_ingredients
 
     validates :title, presence: true
-
-    def new
-        @sandwich = Sandwich.new
-    end
-
-    def create
-
-    end
-
-    def show
-        @sandwich = Sandwich.find(params[:id])
-    end
     
 end
