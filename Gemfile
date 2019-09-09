@@ -20,7 +20,12 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'autoprefixer-rails', '>= 9.1.0'
+gem 'popper_js', '>= 1.14.3', '< 2'
+gem 'sassc-rails', '>= 2.0.0'
+gem 'bootstrap'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -40,11 +45,23 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'actionpack', '>= 4.1.5'
+  gem 'activesupport', '>= 4.1.5'
+  gem 'capybara', '>= 2.6.0'
+  gem 'jquery-rails', '>= 3.1.0'
+  gem 'json', '>= 1.8.1'
+  gem 'minitest', '~> 5.8.0'
+  gem 'minitest-reporters', '~> 1.0.5'
+  gem 'poltergeist', '>= 0'
+  gem 'slim-rails', '>= 0'
+  gem 'sprockets-rails', '>= 2.3.2'
+  gem 'term-ansicolor', '>= 0'
+  gem 'uglifier', '>= 0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  # gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
