@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :sandwiches
   resources :replies, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create, :edit, :update, :destroy, :show]
+  resources :users, only: [:new, :create, :edit, :update, :destroy, :show], param: :username
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/ingredients/search', to: 'ingredients#search'

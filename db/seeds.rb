@@ -8,7 +8,7 @@
 
 
 andy = User.create(display_name: "Sandwich Junky", age: 39, username: "andyr", bio: "I am a person and from a place", img_url: 'https://www.newmarketgroup.com/images/default-source/logos/directlogo.png?sfvrsn=2', email: 'rosario.andrew@gmail.com')
-ana = User.create(display_name: "Sandbitch", age: 24, username: "anaa", bio: "I like sandwiches and long walks on the beach", img_url: 'http://i.imgur.com/dIgHc.jpg', email: 'ana@ana.com')
+ana = User.create(display_name: "Sandbitch", age: 24, username: "anaa", bio: "I like sandwiches and long walks on the beach", img_url: 'splat.png', email: 'ana@ana.com')
 bill = User.create(display_name: "The Sandwich Snob", age: 21, username: 'billb', bio: "Don't you dare make me a bad sandwich", email: 'bill@bill.com')
 
 ham = Ingredient.create(name: "Ham", type_of: 'filling', is_meat: true)
