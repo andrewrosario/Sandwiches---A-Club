@@ -77,4 +77,10 @@ class Sandwich < ApplicationRecord
         new_array << self.ingredient_search(input)
         array = new_array.flatten.uniq
     end
+
+    def ingredient_quantity(id)
+        ingredient = Ingredient.find(id)
+        relation = SandwichIngredient.where('sandwich_id LIKE ? AND ingredient_id LIKE ?', self.id, ingredient.id)
+        relation.first.quantity if !relation.empty?
+    end
 end

@@ -1,0 +1,14 @@
+
+        <%= f.fields_for :ingredient do |i| %>
+            <%= i.label :name %>
+            <%= i.text_field :name %>
+            <label>Type of:</label>
+            <%= select_tag(:type_of, options_for_select(@type_of)) %>
+            <label>Gluten Free</label><%= i.check_box :is_gluten_free %>
+            <label>Vegan</label><%= i.check_box :is_vegan %>
+            <label>Vegetarian</label><%= i.check_box :is_vegetarian %>
+            <label>Kosher</label><%= i.check_box :is_kosher %>
+            <br>
+            <%= i.submit "Add Another Ingredient" %>
+            <br>
+        <% end %>

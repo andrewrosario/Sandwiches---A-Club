@@ -21,12 +21,14 @@ class SandwichesController < ApplicationController
 
     def edit
         @sandwich = Sandwich.find(params[:id])
+        @ingredient = Ingredient.new
         @type_of = ['Bread', 'Meat', 'Filling']
         @categories = CATEGORIES
     end
 
     def update
         # {"sandwich"=>{"title"=>"?", "description"=>"?", "ingredient_ids"=>["", "1", "2", "3", "4"], "instructions"=>"?"}
+        sandwich = Sandwich.find(params[:id])
         byebug
     end
 
@@ -42,6 +44,13 @@ class SandwichesController < ApplicationController
         sandwiches_by_category = Sandwich.restrict_by_category(params[:category])
         @sandwiches = sandwiches_by_category & sandwiches_by_search
         render 'index'
+    end
+
+    def add_ingredient
+        ingredient = Ingredient.create(ingredient_params)
+        sandwich_ingredient = SandwichIngredient.create(sandwich_id: params[:ingredient][:sandwich_id], ingredient_id: ingredient.id, quantity: params[:ingredient][:quantity])
+        sandwich = Sandwich.find(params[:ingredient][:sandwich_id])
+        redirect_to edit_sandwich_path(sandwich)
     end
 
     private
