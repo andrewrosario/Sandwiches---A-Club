@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/ingredients/search', to: 'ingredients#search'
-  get '/sandwiches/search', to: 'sandwiches#search'
+  post '/sandwiches/search', to: 'sandwiches#search'
   
   get '/', to: 'users#home'
 

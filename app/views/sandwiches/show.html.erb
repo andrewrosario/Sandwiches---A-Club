@@ -1,0 +1,26 @@
+<h1><%= @sandwich.title %></h1>
+
+<p><%= link_to "Delete", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %></p>
+
+<%= render 'details'%>
+
+<h2>Comments:</h2>
+<%@sandwich.comments.each do |c|%>
+<div>
+    <h4><%= c.title%></h4>
+    <p><%= c.user.display_name %>, commented at: <%= c.created_at %></p>
+    <p><%= c.content %></p>
+    <% if !c.replies.empty? %>
+        <h4>Replies:</h4>
+    <% end %>
+    <%c.replies.each do |r|%>
+    <div>
+        <p><%=r.user.display_name %>, replied at: <%= c.created_at %></p>
+        <p><%= r.content %></p>
+    </div>
+    <% end %>
+    <%= render 'reply' %>
+</div>
+<% end %>
+
+<%= render 'comment_form' %>
