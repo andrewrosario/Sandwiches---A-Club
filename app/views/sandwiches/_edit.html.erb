@@ -5,15 +5,15 @@
     <%= f.label :description %>
     <%= f.text_area :description %>
     <br>
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions %>
+    <br>
     <%= f.label :ingredients %><br>
     <% n = 1 %>
     <% ingredients.each do |i| %>
        <p> <%= f.label i.name %>:<%= f.check_box :ingredients, { multiple: true, checked: sandwich.ingredients.include?(i) }, i.name, false %> - <%= f.label "Quantity"%><%= f.text_field "quantity[#{i.name}]", value: sandwich.ingredient_quantity(i.id) %></p>
        <% n += 1 %>
     <% end %>
-    <br>
-    <%= f.label :instructions %>
-    <%= f.text_area :instructions %>
     <br>
     <%= f.submit %>
 <% end %>

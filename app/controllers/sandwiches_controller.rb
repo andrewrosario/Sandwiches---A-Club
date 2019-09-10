@@ -27,7 +27,7 @@ class SandwichesController < ApplicationController
         @sandwich = Sandwich.find(params[:id])
         @ingredients = Ingredient.all
         @ingredient = Ingredient.new
-        @type_of = ['Bread', 'Meat', 'Filling']
+        @type_of = ['Bread', 'Condiment', 'Filling']
         @categories = CATEGORIES
     end
 
@@ -61,7 +61,6 @@ class SandwichesController < ApplicationController
         ingredient = Ingredient.create(ingredient_params)
         sandwich_ingredient = SandwichIngredient.create(sandwich_id: params[:ingredient][:sandwich_id], ingredient_id: ingredient.id, quantity: params[:ingredient][:quantity])
         sandwich = Sandwich.find(params[:ingredient][:sandwich_id])
-        byebug
         redirect_to edit_sandwich_path(sandwich)
     end
 
