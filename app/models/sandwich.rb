@@ -7,8 +7,11 @@ class Sandwich < ApplicationRecord
 
     validates :title, presence: true
 
+    accepts_nested_attributes_for :ingredients
+
     def average_rating
         sum = self.comments.average(:rating)
+        !sum ? 0 : sum
     end
 
     def is_vegan?
@@ -37,44 +40,41 @@ class Sandwich < ApplicationRecord
 
     def is_kosher?
 
-
     end
 
-    def name_search(input)
+    def self.restrict_by_category(category)
+        case category
+        when "Vegan"
+            self.select{|s| s.is_vegan?}
+        when "Vegetarian"
+            self.select{|s| s.is_vegetarian?}
+        when "Gluten-Free"
+            self.select{|s| s.is_gluten_free?}
+        when "All"
+            self.all
+        end
+    end
+
+    def self.name_search(input)
         string = "%#{input}%"
         self.where("title LIKE ?", string)
     end
 
-    def description_search(input)
+    def self.description_search(input)
         string = "%#{input}%"
         self.where("description LIKE ?", string)
     end
     
-    def ingredient_search(input)
+    def self.ingredient_search(input)
         string = "%#{input}%"
         self.joins(:ingredients).where("name LIKE ?", string)
     end
 
-    def consolidate_searches(input)
-        byebug
+    def self.consolidate_searches(input)
         new_array = []
         new_array << self.name_search(input)
         new_array << self.description_search(input)
         new_array << self.ingredient_search(input)
         array = new_array.flatten.uniq
     end
-
-    def self.restrict_by_category(category)
-        case category
-        when "Vegan"
-            Sandwich.all.select{|s| s.is_vegan?}
-        when "Vegetarian"
-            Sandwich.all.select{|s| s.is_vegetarian?}
-        when "Gluten-Free"
-            Sandwich.all.select{|s| s.is_gluten_free?}
-        else
-            Sandwich.all
-        end
-    end
-
 end

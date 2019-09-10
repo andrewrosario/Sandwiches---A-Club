@@ -1,0 +1,28 @@
+<h1>Edit Sandwich</h1>
+<h1><%= @sandwich.title %></h1>
+
+<%= render 'details' %>
+
+<%= form_with model: @sandwich do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :description %>
+<%= f.text_area :description %>
+<br>
+<%= f.label :ingredients %>
+<%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+<br>
+<%= f.fields_for :ingredient do |i| %>
+    <%= i.label :name %>
+    <%= i.text_field :name %>
+    <%= i.label :type_of %>
+    <%= i.select(:type_of, @type_of) %>
+    <%= i.collection_check_boxes :type_of, { 'Gluten-Free': 1, 'Vegan': 2, 'Vegetarian': 3, 'Halal': 4, 'Kosher': 5 }, :first, :first %>
+<% end %>
+<br>
+<%= f.label :instructions %>
+<%= f.text_area :instructions %>
+<br>
+<%= f.submit %>
+<% end %>

@@ -1,9 +1,11 @@
 class SandwichesController < ApplicationController
-
+    CATEGORIES = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free', "Halal", "Kosher"]
+    
     def index
         @sandwiches = Sandwich.all
-        @categories = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free', "Halal", "Kosher"]
+        @categories = CATEGORIES
     end
+
     def new
         @sandwich = Sandwich.new
     end
@@ -19,22 +21,26 @@ class SandwichesController < ApplicationController
 
     def edit
         @sandwich = Sandwich.find(params[:id])
+        @type_of = ['Bread', 'Meat', 'Filling']
+        @categories = CATEGORIES
     end
 
     def update
-
+        # {"sandwich"=>{"title"=>"?", "description"=>"?", "ingredient_ids"=>["", "1", "2", "3", "4"], "instructions"=>"?"}
+        byebug
     end
 
     def destroy
-
+        @sandwich = Sandwich.find(params[:id])
+        @sandwich.destroy
+        redirect_to '/sandwiches'
     end
 
     def search
-        @categories = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free', "Halal", "Kosher"]
-        @sandwiches = Sandwich.restrict_by_category(params[:category])
-        if !params[:search][:name].empty?
-            @sandwiches = @sandwiches
-        end
+        @categories = CATEGORIES
+        sandwiches_by_search = Sandwich.consolidate_searches(params[:search][:name])
+        sandwiches_by_category = Sandwich.restrict_by_category(params[:category])
+        @sandwiches = sandwiches_by_category & sandwiches_by_search
         render 'index'
     end
 
@@ -43,4 +49,6 @@ class SandwichesController < ApplicationController
     def sandwich_params
         params.require(:sandwich).permit(:title, :instructions, :description, :img_url)
     end
+
+
 end

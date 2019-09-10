@@ -1,9 +1,9 @@
 <h1>Browse Sandwiches</h1>
 
 <%= form_tag('/sandwiches/search')%>
-<%= label_tag(:search, 'Search by Name')%>
-<%= search_field(:search, :name)%>
-<%= label_tag(:search, 'or Filter results by')%>
+<%= label_tag(:search, 'Search')%>
+<%= search_field(:search, :name)%><br>
+<%= label_tag(:search, 'Filter results by')%>
 <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
 <%= submit_tag "Search" %>
 
