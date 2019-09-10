@@ -1,0 +1,27 @@
+<%= form_for user do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <br>
+  <%= f.label :display_name %>
+  <%= f.text_field :display_name %>
+  <br>
+  <%= f.label "E-mail address" %>
+  <%= f.text_field :email %> 
+  <br>
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+  <br>
+  <%= f.label :bio %>
+  <%= f.text_area :bio %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+<% if user.errors.any? %>
+  <p><%= pluralize(user.errors.count, 'error') %> prevented you from creating an account:</p>
+  <ul>
+    <% user.errors.full_messages.each do |err| %>
+      <li><%= err %></li>
+    <% end %>
+  </ul>
+<% end %> 
