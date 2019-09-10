@@ -49,6 +49,4 @@ class SandwichesController < ApplicationController
     def sandwich_params
         params.require(:sandwich).permit(:title, :instructions, :description, :img_url)
     end
-
-
 end
