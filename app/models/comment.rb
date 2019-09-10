@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
     validate :title_or_rating
 
     def title_or_rating
-        #comments may have only a title and content or only a rating, or they may have all 3. However, if they have a title they must have content.
+        errors.add(:base, "You must give either a comment or a rating") unless (title || rating)
     end
 
 
