@@ -22,5 +22,4 @@
     <%= render 'reply' %>
 </div>
 <% end %>
-
-<%= render 'comment_form' %>
+<%= render partial: 'comment_form', locals: {sandwich: @sandwich} %>
