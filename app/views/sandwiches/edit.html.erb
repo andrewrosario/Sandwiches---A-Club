@@ -2,33 +2,12 @@
 <h1><%= @sandwich.title %></h1>
 
 <%= render 'details' %>
-
-
-<h4>To add an unlisted ingredient, please create a new ingredient below</h4>
-<%= form_with url: add_ingredient_path, scope: 'ingredient' do |f| %>
-    <%= f.hidden_field :sandwich_id, value: @sandwich.id %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.label :quantity %>
-  <%= f.text_field :quantity%>
-  <br>
-  <%= f.label :type_of %>
-  <%= f.select :type_of, @type_of, include_blank: true %>
-  <br>
-  <%= f.label :img_url %>
-  <%= f.text_field :img_url %>
-  <br>
-  <%= f.label "Does it have meat?" %>
-  <%= f.check_box :is_meat %>
-  <%= f.label "Does it contain either dairy or egg?" %>
-  <%= f.check_box :is_dairy_or_egg %>
-  <%= f.label "Is it gluten-free?" %>
-  <%= f.check_box :is_gluten_free %>
-  <br>
-  <%= f.submit %>
-<% end %>
-
+<br>
+<br>
+<h4>Modify your Sandwich</h4>
+<%= render partial: 'edit', locals: {sandwich: @sandwich, ingredients: @ingredients} %>
+<br>
+<%= render partial: 'new_ingredient', locals: {sandwich: @sandwich, type_of: @type_of } %>
 
 <% if @ingredient.errors.any? %>
   <%= pluralize(@ingredient.errors.count, 'error') %> prevented you
@@ -38,25 +17,4 @@
       <li><%= err %></li>
     <% end %>
   </ul>
-<% end %>
-
-<br>
-<br>
-<h4>Modify your Sandwich</h4>
-<%= form_with model: @sandwich do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <br>
-    <%= f.label :ingredients %><br>
-    <% Ingredient.all.each do |i| %>
-       <p> <%= f.label i.name %>:<%= f.check_box :ingredients, { multiple: true }, i, false %> - <%= f.label "Quantity"%><%= f.text_field :quantity, value: @sandwich.ingredient_quantity(i.id) %></p>
-    <% end %>
-    <br>
-    <%= f.label :instructions %>
-    <%= f.text_area :instructions %>
-    <br>
-    <%= f.submit %>
 <% end %>

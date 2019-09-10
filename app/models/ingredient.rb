@@ -11,3 +11,5 @@ class Ingredient < ApplicationRecord
         self.type_of.downcase!
     end
 end
+
+

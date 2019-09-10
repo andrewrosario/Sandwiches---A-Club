@@ -1,0 +1,20 @@
+<h1>New Sandwich</h1>
+
+<h3>Please name and describe your sandwich<h3>
+<p>You will add ingredients on the next page</p>
+<%= form_with model: @sandwich do |f| %>
+    <%= f.hidden_field :user_id, value: 1 %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br>
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions %>
+    <br>
+    <br>
+    <%= f.submit %>
+<%end%>
+
+
