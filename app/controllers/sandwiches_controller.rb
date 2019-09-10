@@ -15,6 +15,12 @@ class SandwichesController < ApplicationController
         user = User.find(params[:sandwich][:user_id])
         sandwich.user = user
         sandwich.save
+        # byebug
+        if !sandwich.errors.full_messages.empty?
+            # byebug
+            flash[:error] = sandwich.errors.full_messages[0]
+            return redirect_to new_sandwich_path
+        end
         redirect_to edit_sandwich_path(sandwich)
     end
 
@@ -61,6 +67,11 @@ class SandwichesController < ApplicationController
         ingredient = Ingredient.create(ingredient_params)
         sandwich_ingredient = SandwichIngredient.create(sandwich_id: params[:ingredient][:sandwich_id], ingredient_id: ingredient.id, quantity: params[:ingredient][:quantity])
         sandwich = Sandwich.find(params[:ingredient][:sandwich_id])
+        if !ingredient.errors.full_messages.empty?
+            # byebug
+            flash[:error] = ingredient.errors.full_messages[0]
+            return edit_sandwich_path(sandwich)
+        end
         redirect_to edit_sandwich_path(sandwich)
     end
 
