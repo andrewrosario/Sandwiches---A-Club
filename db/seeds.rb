@@ -21,10 +21,10 @@ Sandwich.create(title: "Ham and Cheese", instructions: "Put the bread on either 
 Sandwich.create(title: "Cheese Sandwich", instructions: "Put the bread on either side of the cheese.", description: "Cheese is perfect", user_id: 2)
 Sandwich.create(title: "Just Bread Sandwich", instructions: "Eat the bread.", description: "So dry.", user_id: 3)
 
-SandwichIngredient.create(sandwich_id: 1, ingredient_id: 1, quantity: "some")
-SandwichIngredient.create(sandwich_id: 1, ingredient_id: 2, quantity: "a lot")
-SandwichIngredient.create(sandwich_id: 1, ingredient_id: 3, quantity: "some more")
-SandwichIngredient.create(sandwich_id: 1, ingredient_id: 4, quantity: "some more still")
+SandwichIngredient.create(sandwich_id: 7, ingredient_id: 10, quantity: "some")
+SandwichIngredient.create(sandwich_id: 7, ingredient_id: 11, quantity: "a lot")
+SandwichIngredient.create(sandwich_id: 7, ingredient_id: 12, quantity: "some more")
+SandwichIngredient.create(sandwich_id: 7, ingredient_id: 13, quantity: "some more still")
 
 SandwichIngredient.create(sandwich_id: 2, ingredient_id: 2, quantity: "add some")
 SandwichIngredient.create(sandwich_id: 2, ingredient_id: 3, quantity: "two pieces")

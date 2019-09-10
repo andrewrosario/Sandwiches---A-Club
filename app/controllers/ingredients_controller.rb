@@ -52,9 +52,4 @@ class IngredientsController < ApplicationController
     def set_type_of
       @categories = [['bread', 'bread'], ['filling', 'filling'], ['condiment', 'condiment']]
     end
-
-    def ingredient_params
-      params.require(:ingredient).permit(:name, :type_of, :img_url,
-      :is_meat, :is_dairy_or_egg, :is_gluten_free)
-    end
 end

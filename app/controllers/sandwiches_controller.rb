@@ -11,7 +11,17 @@ class SandwichesController < ApplicationController
     end
 
     def create
-
+        sandwich = Sandwich.new(sandwich_params)
+        user = User.find(params[:sandwich][:user_id])
+        sandwich.user = user
+        sandwich.save
+        # byebug
+        if !sandwich.errors.full_messages.empty?
+            # byebug
+            flash[:error] = sandwich.errors.full_messages[0]
+            return redirect_to new_sandwich_path
+        end
+        redirect_to edit_sandwich_path(sandwich)
     end
 
     def show
@@ -21,13 +31,22 @@ class SandwichesController < ApplicationController
 
     def edit
         @sandwich = Sandwich.find(params[:id])
-        @type_of = ['Bread', 'Meat', 'Filling']
+        @ingredients = Ingredient.all
+        @ingredient = Ingredient.new
+        @type_of = ['Bread', 'Condiment', 'Filling']
         @categories = CATEGORIES
     end
 
     def update
-        # {"sandwich"=>{"title"=>"?", "description"=>"?", "ingredient_ids"=>["", "1", "2", "3", "4"], "instructions"=>"?"}
-        byebug
+        sandwich = Sandwich.find(params[:id])
+        sandwich.ingredients.clear
+        ingredients = params[:sandwich][:ingredients]
+        ingredients.each do |ing|
+            thing = Ingredient.find_by(name: ing)
+            quantity = params[:sandwich][:quantity][ing]
+            sandwich_ingredient = SandwichIngredient.create(sandwich_id: sandwich.id, ingredient_id: thing.id, quantity: quantity)
+        end
+        redirect_to sandwich_path(sandwich)
     end
 
     def destroy
@@ -44,9 +63,21 @@ class SandwichesController < ApplicationController
         render 'index'
     end
 
+    def add_ingredient
+        ingredient = Ingredient.create(ingredient_params)
+        sandwich_ingredient = SandwichIngredient.create(sandwich_id: params[:ingredient][:sandwich_id], ingredient_id: ingredient.id, quantity: params[:ingredient][:quantity])
+        sandwich = Sandwich.find(params[:ingredient][:sandwich_id])
+        if !ingredient.errors.full_messages.empty?
+            # byebug
+            flash[:error] = ingredient.errors.full_messages[0]
+            return edit_sandwich_path(sandwich)
+        end
+        redirect_to edit_sandwich_path(sandwich)
+    end
+
     private
 
     def sandwich_params
-        params.require(:sandwich).permit(:title, :instructions, :description, :img_url)
+        params.require(:sandwich).permit(:title, :instructions, :description, :img_url, :ingredients)
     end
 end

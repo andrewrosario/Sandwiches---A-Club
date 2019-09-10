@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/', to: 'users#home'
 
   get '/stats', to: 'application#stats', as: 'stats'
+  post '/add_ingredient', to: 'sandwiches#add_ingredient', as: 'add_ingredient'
 
 end

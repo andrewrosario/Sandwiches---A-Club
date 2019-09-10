@@ -5,7 +5,7 @@
 <h2>Ingredients:</h2>
 <ul>
 <%@sandwich.ingredients.each do |i|%>
-<li><%= link_to i.name, ingredient_path(i) %></li>
+<li><%= link_to i.name, ingredient_path(i) %> - <%= @sandwich.ingredient_quantity(i.id)%></li>
 <%end%>
 </ul>
 
