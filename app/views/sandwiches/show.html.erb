@@ -1,6 +1,6 @@
 <h1><%= @sandwich.title %></h1>
-
-<img src=<%= "/assets/#{@sandwich.img_url}" %> height="100" width="100">
+<h2>Average Rating: <%= @sandwich.average_rating%>
+<div><img src=<%= "/assets/#{@sandwich.img_url}" %> height="100" width="100"></div>
 <h2>Description:</h2>
 <p><%= @sandwich.description %>
 <h2>Ingredients:</h2>

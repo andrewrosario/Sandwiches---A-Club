@@ -16,12 +16,20 @@ cheese = Ingredient.create(name: "Cheese", type_of: 'filling', is_dairy_or_egg: 
 bread = Ingredient.create(name: "Bread", type_of: 'bread')
 mustard = Ingredient.create(name: "Mustard", type_of: 'condiment', is_gluten_free: true)
 
+
 Sandwich.create(title: "Ham and Cheese", instructions: "Put the bread on either side of the ham and the cheese. Grill", description: "The moment I fell in love with my husband was when he made me this sandwich", user_id: 1)
+Sandwich.create(title: "Cheese Sandwich", instructions: "Put the bread on either side of the cheese.", description: "Cheese is perfect", user_id: 2)
+Sandwich.create(title: "Just Bread Sandwich", instructions: "Eat the bread.", description: "So dry.", user_id: 3)
 
 SandwichIngredient.create(sandwich_id: 1, ingredient_id: 1, quantity: "some")
 SandwichIngredient.create(sandwich_id: 1, ingredient_id: 2, quantity: "a lot")
 SandwichIngredient.create(sandwich_id: 1, ingredient_id: 3, quantity: "some more")
 SandwichIngredient.create(sandwich_id: 1, ingredient_id: 4, quantity: "some more still")
+
+SandwichIngredient.create(sandwich_id: 2, ingredient_id: 2, quantity: "add some")
+SandwichIngredient.create(sandwich_id: 2, ingredient_id: 3, quantity: "two pieces")
+
+SandwichIngredient.create(sandwich_id: 3, ingredient_id: 3, quantity: "two or more pieces")
 
 Comment.create(title: "I hate ham", rating: 1, content: "Ham is the grossest meat ever", user_id: 2, sandwich_id: 1)
 Comment.create(title: "I love ham", rating: 4, content: "Ham is the best meat ever", user_id: 3, sandwich_id: 1)
