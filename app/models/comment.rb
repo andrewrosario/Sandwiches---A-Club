@@ -2,8 +2,8 @@ class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :sandwich
     has_many :replies
-    validate :title, if: :content
-    validate :content, if: :title
+    validates :title, presence: true, if: :content
+    validates :content, presence: true, if: :title
     validate :title_or_rating
 
     def title_or_rating
