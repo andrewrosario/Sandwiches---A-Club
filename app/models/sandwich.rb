@@ -11,7 +11,7 @@ class Sandwich < ApplicationRecord
 
     def average_rating
         sum = self.comments.average(:rating)
-        !sum ? 0 : sum
+        !sum ? 0 : sum.truncate(3)
     end
 
     def is_vegan?
@@ -83,4 +83,30 @@ class Sandwich < ApplicationRecord
         relation = SandwichIngredient.where('sandwich_id LIKE ? AND ingredient_id LIKE ?', self.id, ingredient.id)
         relation.first.quantity if !relation.empty?
     end
+
+    def num_comments
+        Comment.where('sandwich_id LIKE ?', self.id).count
+    end
+
+    def self.sort_by_commented
+        # lowest is 0 highest is -1
+        array = Sandwich.all.sort_by{|s| s.num_comments}
+    end
+
+    def self.most_commented
+        com = Comment.group(:sandwich_id).count
+        id = com.key(com.values.max)
+        Sandwich.find(id)
+    end
+
+    def self.sort_by_rating
+        # lowest is 0 highest is -1
+        Sandwich.all.sort_by{|s| s.average_rating}
+    end
+
+    def self.highest_rated
+        Sandwich.max_by{|s| s.average_rating}
+    end
+
+
 end

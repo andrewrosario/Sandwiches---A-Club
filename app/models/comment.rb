@@ -9,6 +9,4 @@ class Comment < ApplicationRecord
     def title_or_rating
         errors.add(:base, "You must give either a comment or a rating") unless (title || rating)
     end
-
-
 end
