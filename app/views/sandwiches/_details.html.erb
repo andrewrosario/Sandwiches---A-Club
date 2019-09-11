@@ -1,13 +1,18 @@
 <h2>Average Rating: <%= @sandwich.average_rating%>
-<div><img src=<%= "/assets/#{@sandwich.img_url}" %> height="100" width="100"></div>
-<h2>Description:</h2>
-<p><%= @sandwich.description %>
-<h2>Ingredients:</h2>
-<ul>
-<%@sandwich.ingredients.each do |i|%>
-<li><%= link_to i.name, ingredient_path(i) %> - <%= @sandwich.ingredient_quantity(i.id)%></li>
-<%end%>
-</ul>
-
-<h2>Instructions:</h2>
-<p><%= @sandwich.instructions %>
+<div>
+    <img src=<%= "/assets/#{@sandwich.img_url}" %> height="100" width="100">
+</div>
+<div>
+    <h2>Description:</h2>
+    <p><%= @sandwich.description %>
+    <h2>Ingredients:</h2>
+    <ul>
+    <%@sandwich.ingredients.each do |i|%>
+    <li><%= link_to i.name, ingredient_path(i) %> - <%= @sandwich.ingredient_quantity(i.id)%></li>
+    <%end%>
+    </ul>
+</div>
+<div>
+    <h2>Instructions:</h2>
+    <p><%= @sandwich.instructions %>
+</div>

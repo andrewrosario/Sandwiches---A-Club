@@ -3,7 +3,8 @@
 <%= form_with model: Reply.new, url: replies_path do |f| %>
     <%= f.hidden_field :user_id, value: 1 %>
     <%= f.hidden_field :comment_id, value: comment.id %>
+    <%= f.hidden_field :comment_id, value: comment.id %>
     <%= f.text_area :content %><br>
-    <%= f.submit "Reply" %>
+    <%= f.submit "Reply", class: 'btn-sm'%>
 <% end %>
 </div>
