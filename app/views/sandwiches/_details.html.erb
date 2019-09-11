@@ -9,7 +9,7 @@
     <h2>Description:</h2>
     <p><%= @sandwich.description %>
     <h2>Ingredients:</h2>
-    <div class='text-left'>
+    <div class='text-left container'>
     <ul>
     <%@sandwich.ingredients.each do |i|%>
     <li><%= link_to i.name, ingredient_path(i) %> - <%= @sandwich.ingredient_quantity(i.id)%></li>

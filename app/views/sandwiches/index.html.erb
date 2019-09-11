@@ -1,6 +1,6 @@
-<h1>Browse Sandwiches</h1>
+<h1 class='text-center'>Browse Sandwiches</h1>
 
-<div>
+<div class='container text-center'>
     <%= form_tag('/sandwiches/search')%>
     <%= label_tag(:search, 'Search')%>
     <%= search_field(:search, :name)%><br>
@@ -8,11 +8,12 @@
     <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
     <%= submit_tag "Search" %>
 </div>
-
-<div>
+<br>
+<br>
+<div class='container'>
     <ol>
         <% @sandwiches.each do |s| %>
-            <li><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</li>
+            <li><h5><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</h5></li>
         <% end %>
     </ol>
 </div>

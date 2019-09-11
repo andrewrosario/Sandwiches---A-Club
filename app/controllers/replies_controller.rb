@@ -6,6 +6,12 @@ class RepliesController < ApplicationController
         redirect_to sandwich_path(sandwich)
     end
 
+    def destroy
+        reply = Reply.find(params[:reply_id])
+        reply.destroy
+        redirect_to sandwich_path(params[:sandwich_id])
+    end
+
     private
 
     def reply_params

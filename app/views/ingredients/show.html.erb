@@ -1,12 +1,14 @@
-<h1><%= @ingredient.name %></h1>
-<h2><%= @ingredient.type_of%></h1>
-<img src=
-    <% if @ingredient.ingredient_photo.attached? %>
-        <%= url_for(@ingredient.ingredient_photo) %> 
-    <% else %>
-        <%= "/assets/#{@ingredient.img_url}" %>
-    <% end %> width="200">
-<%= link_to "Edit", edit_ingredient_path(@ingredient) %>
-<%= link_to "Delete", @ingredient, method: :delete, data: { confirm: "Really?" } %>
-<%= flash[:message] %>
+<div class='text-center'>
+    <h1><%= @ingredient.name %></h1>
+    <h2><%= @ingredient.type_of%></h1>
+    <img src=
+        <% if @ingredient.ingredient_photo.attached? %>
+            <%= url_for(@ingredient.ingredient_photo) %> 
+        <% else %>
+            <%= "/assets/#{@ingredient.img_url}" %>
+        <% end %> width="200"><br>
+    <%= link_to "Edit", edit_ingredient_path(@ingredient) %>
+    <%= link_to "Delete", @ingredient, method: :delete, data: { confirm: "Really?" } %>
+    <%= flash[:message] %>
+</div>
 
