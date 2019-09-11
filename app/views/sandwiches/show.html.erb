@@ -20,7 +20,10 @@
         <p><%= r.content %></p>
     </div>
     <% end %>
-    <%= render 'reply' %>
+    <% if !c.content.empty? %>
+        <%= render partial: '/replies/form', locals: {comment: c} %>
+    <% end %>
 </div>
 <% end %>
-<%= render partial: 'comment_form', locals: {sandwich: @sandwich} %>
+<h3>Leave a Comment:</h3>
+<%= render partial: '/comments/form', locals: {sandwich: @sandwich} %>
