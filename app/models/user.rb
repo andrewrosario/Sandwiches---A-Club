@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true
     validates :username, uniqueness: true
-    # has_secure_password
+    has_secure_password
     validates :display_name, presence: true
     validates :age, numericality: {min: 13}
     validates :email, presence: true
