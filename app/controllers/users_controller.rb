@@ -26,6 +26,11 @@ class UsersController < ApplicationController
         User.destroy(@user)
     end
 
+    def home
+        @user = current_user
+        @sandwich = Sandwich.all.sample
+    end
+
     private
 
     def set_user

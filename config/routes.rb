@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get '/ingredients/search', to: 'ingredients#search'
   post '/sandwiches/search', to: 'sandwiches#search'
   
-  get '/', to: 'users#home'
+  root 'static#home'
+  get '/home', to: 'users#home', as: 'home'
+  get '/about', to: 'static#about', as: 'about'
 
   get '/stats', to: 'application#stats', as: 'stats'
   post '/add_ingredient', to: 'sandwiches#add_ingredient', as: 'add_ingredient'
