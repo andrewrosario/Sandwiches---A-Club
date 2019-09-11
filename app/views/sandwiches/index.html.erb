@@ -1,14 +1,18 @@
 <h1>Browse Sandwiches</h1>
 
-<%= form_tag('/sandwiches/search')%>
-<%= label_tag(:search, 'Search')%>
-<%= search_field(:search, :name)%><br>
-<%= label_tag(:search, 'Filter results by')%>
-<%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
-<%= submit_tag "Search" %>
+<div>
+    <%= form_tag('/sandwiches/search')%>
+    <%= label_tag(:search, 'Search')%>
+    <%= search_field(:search, :name)%><br>
+    <%= label_tag(:search, 'Filter results by')%>
+    <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
+    <%= submit_tag "Search" %>
+</div>
 
-<ol>
-    <% @sandwiches.each do |s| %>
-        <li><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</li>
-    <% end %>
-</ol>
+<div>
+    <ol>
+        <% @sandwiches.each do |s| %>
+            <li><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</li>
+        <% end %>
+    </ol>
+</div>

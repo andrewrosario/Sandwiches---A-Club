@@ -1,0 +1,20 @@
+<script>
+    function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
+        }
+</script>
+<div>
+<%= form_with model: @comment, url: comments_path do |f| %>
+    <%= f.hidden_field :sandwich_id, value: sandwich.id %>
+    <%= f.hidden_field :user_id, value: 1 %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :rating %>
+    <%= f.range_field :rating, {min: 0, max: 5, step: 0.25, onchange: "updateTextInput(this.value);"} %>
+    <p id="textInput">0</p>
+    <%= f.label :content %>
+    <%= f.text_area :content %><br>
+    <%= f.submit %>
+<% end %>
+</div>

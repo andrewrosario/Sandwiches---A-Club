@@ -4,23 +4,33 @@
 
 <%= render 'details'%>
 
-<h2>Comments:</h2>
-<%@sandwich.comments.each do |c|%>
-<div>
-    <h4><%= c.title%></h4>
-    <p><%= c.user.display_name %>, commented at: <%= c.created_at %></p>
-    <p><%= c.content %></p>
-    <% if !c.replies.empty? %>
-        <h4>Replies:</h4>
-    <% end %>
-    <%c.replies.each do |r|%>
+<div class='container'>
+    <h2>Comments:</h2>
+    <%@sandwich.comments.each do |c|%>
     <div>
-        <p><%=r.user.display_name %>, replied at: <%= c.created_at %></p>
-        <p><%= r.content %></p>
+        <% if !c.content.empty? %>
+            <h4><%= c.title%></h4>
+            <h5>Rating: <%=c.rating%><h5>
+            <p><%= c.user.display_name %>, commented at: <%= c.created_at %></p>
+            <p><%= c.content %></p>
+        <%end%>
+        <% if !c.replies.empty? %>
+            <h4>Replies:</h4>
+        <% end %>
+        <%c.replies.each do |r|%>
+        <div>
+            <p><%=r.user.display_name %>, replied at: <%= c.created_at %></p>
+            <p><%= r.content %></p>
+        </div>
+        <% end %>
+        <% if !c.content.empty? %>
+            <%= render partial: '/replies/form', locals: {comment: c} %>
+        <% end %>
     </div>
     <% end %>
-    <%= render 'reply' %>
 </div>
-<% end %>
 
-<%= render 'comment_form' %>
+<div>
+    <h3>Leave a Comment:</h3>
+    <%= render partial: '/comments/form', locals: {sandwich: @sandwich} %>
+</div>

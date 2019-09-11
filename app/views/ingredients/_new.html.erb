@@ -1,10 +1,15 @@
 <div>
-  <%= form_for ingredient do |f| %>
+  <h4>To add an unlisted ingredient, please create a new ingredient below</h4>
+  <%= form_with url: add_ingredient_path, scope: 'ingredient' do |f| %>
+      <%= f.hidden_field :sandwich_id, value: sandwich.id %>
     <%= f.label :name %>
     <%= f.text_field :name %>
     <br>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity%>
+    <br>
     <%= f.label :type_of %>
-    <%= f.select :type_of, @categories, include_blank: true %>
+    <%= f.select :type_of, type_of, include_blank: true %>
     <br>
     <%= f.label :img_url %>
     <%= f.text_field :img_url %>
@@ -18,15 +23,7 @@
     <br>
     <%= f.submit %>
   <% end %>
-
-
-  <% if ingredient.errors.any? %>
-    <%= pluralize(ingredient.errors.count, 'error') %> prevented you
-    from submitting this form:
-    <ul>
-      <% ingredient.errors.full_messages.each do |err| %>
-        <li><%= err %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <br>
 </div>
+
+
