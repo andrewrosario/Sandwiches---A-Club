@@ -1,6 +1,6 @@
 <h1><%= @user.username %></h1>
 <h2>aka <%= @user.display_name %></h2>
-<img src="/assets/<%= @user.img_url %>" height="100" width="100">
+<img src=<%= url_for(@user.avatar)%> width="200">
 <h3>Age: <%= @user.age %></h3>
 <h3>Join date: <%= @user.created_at.strftime("%F") %></h3> 
 <h3>Bio: </h3>

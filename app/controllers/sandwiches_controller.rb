@@ -1,5 +1,5 @@
 class SandwichesController < ApplicationController
-    CATEGORIES = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free', "Halal", "Kosher"]
+    CATEGORIES = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free']
     
     def index
         @sandwiches = Sandwich.all
@@ -78,6 +78,6 @@ class SandwichesController < ApplicationController
     private
 
     def sandwich_params
-        params.require(:sandwich).permit(:title, :instructions, :description, :img_url, :ingredients)
+        params.require(:sandwich).permit(:title, :instructions, :description, :img_url, :ingredients, :sandwich_photo)
     end
 end

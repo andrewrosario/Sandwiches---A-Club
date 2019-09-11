@@ -1,4 +1,4 @@
-<h1><%= @sandwich.title %></h1>
+<div class='text-center'><h1><%= @sandwich.title %></h1></div>
 
 <p><%= link_to "Delete", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %></p>
 
@@ -11,8 +11,10 @@
         <% if !c.content.empty? %>
             <h4><%= c.title%></h4>
             <h5>Rating: <%=c.rating%><h5>
-            <p><%= c.user.display_name %>, commented at: <%= c.created_at %></p>
-            <p><%= c.content %></p>
+            <div class='bg-light'>
+                <p><%= c.user.display_name %>, commented at: <%= c.created_at %></p>
+                <p><%= c.content %></p>
+            </div>
         <%end%>
         <% if !c.replies.empty? %>
             <h4>Replies:</h4>

@@ -1,6 +1,8 @@
 <script>
     function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
+          console.log('====VAL===')
+          console.log(val)
+          document.getElementById('textInput').innerHTML=val; 
         }
 </script>
 <div>
@@ -12,7 +14,7 @@
     <br>
     <%= f.label :rating %>
     <%= f.range_field :rating, {min: 0, max: 5, step: 0.25, onchange: "updateTextInput(this.value);"} %>
-    <p id="textInput">0</p>
+    <label id="textInput">2.5</label><br>
     <%= f.label :content %>
     <%= f.text_area :content %><br>
     <%= f.submit %>

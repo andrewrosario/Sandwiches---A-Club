@@ -1,6 +1,7 @@
 class Ingredient < ApplicationRecord
     has_many :sandwich_ingredients
     has_many :sandwiches, through: :sandwich_ingredients
+    has_one_attached :ingredient_photo
 
     before_validation :downcase_fields
 
