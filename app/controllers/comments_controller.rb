@@ -9,7 +9,9 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-
+        comment = Comment.find(params[:comment_id])
+        comment.destroy
+        redirect_to sandwich_path(params[:sandwich_id])
     end
 
     private

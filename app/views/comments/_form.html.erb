@@ -8,7 +8,7 @@
 <div>
 <%= form_with model: @comment, url: comments_path do |f| %>
     <%= f.hidden_field :sandwich_id, value: sandwich.id %>
-    <%= f.hidden_field :user_id, value: 1 %>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <br>

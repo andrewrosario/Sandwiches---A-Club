@@ -7,7 +7,7 @@
 <br>
 <div>
     <h4>Modify your Sandwich</h4>
-    <%= render partial: 'edit', locals: {sandwich: @sandwich, ingredients: @ingredients} %><br>
     <%= render partial: '/ingredients/new', locals: {sandwich: @sandwich, type_of: @type_of } %>
+    <%= render partial: 'edit', locals: {sandwich: @sandwich, ingredients: @ingredients} %><br>
     <%= flash[:error] %>
 </div>
