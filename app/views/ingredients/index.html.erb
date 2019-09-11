@@ -1,6 +1,8 @@
-<h1>Ingredients</h1>
+<h1 class='text-center'>Ingredients</h1>
+<div class='container'>
 <ul>
   <% @ingredients.each do |i| %>
-    <li><%= link_to i.name, i %></li>
+    <li><h5><%= link_to i.name, i %><h5></li>
   <% end %>
 </ul>
+</div>

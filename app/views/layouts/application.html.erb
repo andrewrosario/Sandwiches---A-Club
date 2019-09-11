@@ -10,19 +10,21 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default bg-secondary">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">WebSiteName</a>
+          <a class="navbar-brand text-white" href="#">Sandwich: a Club</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Page 1</a></li>
-          <li><a href="#">Page 2</a></li>
-          <li><a href="#">Page 3</a></li>
+          <li><%= link_to 'Home', stranger_home_path, {class: 'text-white'} %></li>
+          <li><%= link_to 'Sandwiches', sandwiches_path, {class: 'text-white'} %></li>
+          <li><%= link_to 'Ingredients', ingredients_path, {class: 'text-white'} %></li>
         </ul>
       </div>
     </nav>
+    <div>
+    <p> </p>
+    <div>
     <%= yield %>
   </body>
 </html>

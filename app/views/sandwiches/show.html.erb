@@ -1,12 +1,25 @@
-<div class='text-center'><h1><%= @sandwich.title %></h1></div>
+<script>
+function toggleHidden(id) {
+  var x = document.getElementById(id);
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<div class='text-center container shadow'><h1><%= @sandwich.title %></h1>
 <% if @sandwich.user.id == session[:user_id] %>
     <p><%= link_to "Delete this Sandwich", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %></p>
     <p><%= link_to "Edit this Sandwich", edit_sandwich_path(@sandwich) %></p>
 <%end%>
 <%= render 'details'%>
+<div><p class='text-white'> . </p></div>
+</div>
 
 <div class='container'>
-    <h2>Comments:</h2>
+    <h2 class='text-center'>Comments:</h2>
     <%@sandwich.comments.each do |com|%>
     <div>
         <% if !com.content.empty? %>
@@ -33,13 +46,14 @@
         </div>
         <% end %>
         <% if !com.content.empty? %>
-            <%= render partial: '/replies/form', locals: {comment: com} %>
+            <button onclick="toggleHidden(<%= com.id %>)">Reply to this Comment</button>
+            <div style='display: none' id=<%= com.id %>><%= render partial: '/replies/form', locals: {comment: com} %></div>
         <% end %>
     </div>
     <% end %>
 </div>
 
-<div>
+<div class='text-center'>
     <h3>Leave a Comment:</h3>
     <%= render partial: '/comments/form', locals: {sandwich: @sandwich} %>
 </div>
