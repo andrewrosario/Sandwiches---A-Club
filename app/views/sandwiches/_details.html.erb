@@ -1,18 +1,21 @@
-<h2>Average Rating: <%= @sandwich.average_rating%>
-<div>
-    <img src=<%= "/assets/#{@sandwich.img_url}" %> height="100" width="100">
-</div>
-<div>
+<div class='text-center'>
+    <h2>Average Rating: <%= @sandwich.average_rating%><br>
+    <img src=
+    <% if @sandwich.sandwich_photo.attached? %>
+        <%= url_for(@sandwich.sandwich_photo) %> 
+    <% else %>
+        <%= "/assets/#{@sandwich.img_url}" %>
+    <% end %> width="200">
     <h2>Description:</h2>
     <p><%= @sandwich.description %>
     <h2>Ingredients:</h2>
+    <div class='text-left'>
     <ul>
     <%@sandwich.ingredients.each do |i|%>
     <li><%= link_to i.name, ingredient_path(i) %> - <%= @sandwich.ingredient_quantity(i.id)%></li>
     <%end%>
     </ul>
-</div>
-<div>
+    </div>
     <h2>Instructions:</h2>
     <p><%= @sandwich.instructions %>
 </div>

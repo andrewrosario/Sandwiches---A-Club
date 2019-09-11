@@ -3,6 +3,8 @@ class User < ApplicationRecord
     has_many :sandwiches
     has_many :replies
 
+    has_one_attached :avatar
+
     validates :username, presence: true
     validates :username, uniqueness: true
     # has_secure_password

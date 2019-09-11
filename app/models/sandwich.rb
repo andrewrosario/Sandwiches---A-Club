@@ -5,6 +5,8 @@ class Sandwich < ApplicationRecord
     has_many :sandwich_ingredients
     has_many :ingredients, through: :sandwich_ingredients
 
+    has_one_attached :sandwich_photo
+
     validates :title, presence: true
 
     accepts_nested_attributes_for :ingredients

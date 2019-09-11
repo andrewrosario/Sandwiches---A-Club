@@ -11,19 +11,18 @@
     <%= f.label :type_of %>
     <%= f.select :type_of, type_of, include_blank: true %>
     <br>
-    <%= f.label :img_url %>
-    <%= f.text_field :img_url %>
-    <br>
     <%= f.label "Does it have meat?" %>
     <%= f.check_box :is_meat %>
     <%= f.label "Does it contain either dairy or egg?" %>
     <%= f.check_box :is_dairy_or_egg %>
     <%= f.label "Is it gluten-free?" %>
-    <%= f.check_box :is_gluten_free %>
-    <br>
+    <%= f.check_box :is_gluten_free %><br>
+    <%= f.label :ingredient_photo %>
+    <%= f.file_field :ingredient_photo %><br>
     <%= f.submit %>
   <% end %>
   <br>
 </div>
+
 
 

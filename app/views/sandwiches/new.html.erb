@@ -11,9 +11,12 @@
         <%= f.text_area :description %><br>
         <%= f.label :instructions %>
         <%= f.text_area :instructions %><br>
+        <%= f.label :sandwich_photo %>
+        <%= f.file_field :sandwich_photo %><br>
         <%= f.submit %>
     <%end%>
     <br>
     <%= flash[:error] %>
 </div>
+
 
