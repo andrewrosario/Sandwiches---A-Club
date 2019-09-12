@@ -12,8 +12,9 @@ class SessionsController < ApplicationController
       @user = authenticated
       redirect_to home_path
     end
+
     def destroy
       session.delete :user_id
-      redirect_to login_path
+      redirect_to stranger_home_path
     end
 end

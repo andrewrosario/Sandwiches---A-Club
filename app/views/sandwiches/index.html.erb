@@ -13,7 +13,12 @@
 <div class='col-12 container'>
     <ul class="list-unstyled row">
         <% @sandwiches.each do |s| %>
-            <li class="list-group-item col-4 border-0"><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</li>
+            <li class="list-group-item col-3 border-0"> <img src=
+    <% if s.sandwich_photo.attached? %>
+        <%= url_for(s.sandwich_photo)%>
+    <% else %>
+        <%= "/assets/#{s.img_url}" %> 
+      <% end %> width="100">  <%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</li>
         <% end %>
     </ul>
 </div>

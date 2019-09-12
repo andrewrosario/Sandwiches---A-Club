@@ -1,9 +1,19 @@
+<div class='text-center'>
 <h1><%= @user.username %></h1>
 <h2>aka <%= @user.display_name %></h2>
-<img src=<%= url_for(@user.avatar)%> width="200">
+<img src=
+    <% if @user.avatar.attached? %>
+        <%= url_for(@user.avatar)%>
+    <% else %>
+        <%= "/assets/#{@user.img_url}" %> 
+    <% end %> width="200">
 <h3>Age: <%= @user.age %></h3>
 <h3>Join date: <%= @user.created_at.strftime("%F") %></h3> 
 <h3>Bio: </h3>
 <p><%= @user.bio %></p>
-<%= link_to "Edit profile", edit_user_path(@user.username) %>
-<%= link_to "Delete account", user_path(@user.username), method: :delete, data: {confirm: "Are you sure? We'll miss you!"}%>
+<% if @user.id == session[:user_id] %>
+    <%= link_to "Edit profile", edit_user_path(@user.username) %>
+    <%= link_to "Delete account", user_path(@user.username), method: :delete, data: {confirm: "Are you sure? We'll miss you!"}%>
+<% end %>
+</div>
+

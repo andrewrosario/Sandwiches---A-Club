@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        @user.destroy
+        @user.is_deleted = true
+        @user.save
         redirect_to stranger_home_path
     end
 
