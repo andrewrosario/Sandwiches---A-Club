@@ -1,6 +1,7 @@
 class IngredientsController < ApplicationController
     before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
     before_action :set_type_of, only: [:new, :create]
+    before_action :must_be_logged_in, only: [:new, :edit, :destroy]
     def index
         @ingredients = Ingredient.all.sort_by{|i| i.name}
         @categories = ['All', 'Filling', 'Bread', 'Condiment']

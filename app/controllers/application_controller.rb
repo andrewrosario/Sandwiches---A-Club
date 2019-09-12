@@ -5,6 +5,14 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user 
-      (User.find(session[:user_id]) || User.new)
+      (User.find_by_id(session[:user_id]) || User.new)
+    end
+
+    def logged_in
+      current_user.id != nil
+    end
+
+    def must_be_logged_in
+      return redirect_to forbidden_path unless logged_in
     end
 end
