@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user.username)
+            redirect_to home_path
         else
             render :new
         end
@@ -44,6 +44,14 @@ class UsersController < ApplicationController
 
     def sandwiches
         @sandwiches = @user.sandwiches
+    end
+
+    def stats
+        @hall_of_fame = User.sort_by_rating.reverse.slice(0, 5)
+        @hall_of_shame = User.sort_by_rating.slice(0, 5)
+        @highest_rated = Sandwich.highest_rated
+        @most_commented = Sandwich.most_commented
+
     end
 
     private

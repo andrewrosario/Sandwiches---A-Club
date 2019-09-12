@@ -55,6 +55,7 @@ group :development do
   gem 'minitest', '~> 5.8.0'
   gem 'minitest-reporters', '~> 1.0.5'
   gem 'poltergeist', '>= 0'
+  gem 'rspec-rails'
   gem 'slim-rails', '>= 0'
   gem 'sprockets-rails', '>= 2.3.2'
   gem 'term-ansicolor', '>= 0'
