@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
-  get '/stats', to: 'application#stats', as: 'stats'
+  get 'users/:username/sandwiches', to: "users#sandwiches", as: 'user_sandwich'
+  get '/stats', to: 'users#stats', as: 'stats'
   post '/add_ingredient', to: 'sandwiches#add_ingredient', as: 'add_ingredient'
 
   get '/403', to: 'errors#forbidden', as: 'forbidden'

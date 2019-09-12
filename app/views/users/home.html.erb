@@ -1,3 +1,32 @@
-<h1>Welcome, <%= @user.username %>!</h1>
-<p>Sandwich of the moment: <%= @sandwich.title %></p>
-<p><%= link_to "Log out", logout_path %></p>
+<h1 class="text-center">Welcome, <%= @user.username %>!</h1>
+<div class="container">
+<div class="row">
+<div class="col d-inline-block">
+<p>Sandwich of the moment: <%= link_to @sandwich.title, @sandwich %></p>
+<img src=
+    <% if @sandwich.sandwich_photo.attached? %>
+        <%= url_for(@sandwich.sandwich_photo)%>
+    <% else %>
+        <%= "/assets/#{@sandwich.img_url}" %> 
+      <% end %> width="300">
+</div>
+<div class="col d-inline-block">
+<p>Your top-rated sandwich: <%= link_to @top_sandwich.title, @top_sandwich %></p>
+<img src=
+    <% if @top_sandwich.sandwich_photo.attached? %>
+        <%= url_for(@top_sandwich.sandwich_photo)%>
+    <% else %>
+        <%= "/assets/#{@top_sandwich.img_url}" %> 
+      <% end %> width="300">
+</div>
+<div class="col d-inline-block">
+<p>Your bottom-rated sandwich: <%= link_to @bottom_sandwich.title, @bottom_sandwich %></p>
+<img src=
+    <% if @bottom_sandwich.sandwich_photo.attached? %>
+        <%= url_for(@bottom_sandwich.sandwich_photo)%>
+    <% else %>
+        <%= "/assets/#{@bottom_sandwich.img_url}" %> 
+      <% end %> width="300">
+</div>
+</div>
+</div>
