@@ -17,3 +17,32 @@
 // @import 'bootstrap-sprockets';
 // @import "config";
 @import 'bootstrap';
+
+.nav-div {
+    height: 70px;
+    overflow: visible;
+    margin-left: 0px;
+}
+
+.navbar {
+    background-color: #F9F7D7;
+}
+
+.float-right a {
+    color: #0A1913;
+    text-decoration: none;
+    font-family: 'Chilanka', cursive;
+    font-size: 20px
+}
+
+body {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.rounded-corners {
+    border-radius: 30px
+}
