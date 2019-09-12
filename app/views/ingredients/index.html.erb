@@ -7,10 +7,10 @@
     <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
     <%= submit_tag "Search" %>
 </div>
-<div class='container'>
-<ul>
+<div class='col-12 container'>
+<ul class="list-unstyled row">
   <% @ingredients.each do |i| %>
-    <li><h5><%= link_to i.name, i %><h5></li>
+    <li class="list-group-item col-4 border-0"><%= link_to i.name, i %></li>
   <% end %>
 </ul>
 </div>

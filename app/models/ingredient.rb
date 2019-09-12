@@ -13,11 +13,7 @@ class Ingredient < ApplicationRecord
     end
 
     def self.restrict_by_category(category)
-        if category == 'All'
-            self.all 
-        else
-            self.select{|s| s.type_of == category.downcase}
-        end
+        category == 'All' ? self.all : self.select{|s| s.type_of == category.downcase}
     end
 
     def self.name_search(input)
@@ -26,4 +22,3 @@ class Ingredient < ApplicationRecord
     end
 end
 
-Ingredient.name_search('ham')

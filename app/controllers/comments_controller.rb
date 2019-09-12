@@ -10,7 +10,12 @@ class CommentsController < ApplicationController
 
     def destroy
         comment = Comment.find(params[:comment_id])
-        comment.destroy
+        if !comment.replies.empty?
+            comment.content = 'This comment has been deleted.'
+            comment.save
+        else
+            comment.destroy
+        end
         redirect_to sandwich_path(params[:sandwich_id])
     end
 

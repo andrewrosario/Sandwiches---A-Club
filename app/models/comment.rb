@@ -14,10 +14,6 @@ class Comment < ApplicationRecord
         Reply.where('comment_id LIKE ?', self.id).count
     end
 
-    def num_replies
-        Reply.where('comment_id LIKE ?', self.id).count
-    end
-
     def self.sort_by_replied
         # lowest is 0 highest is -1
         array = Comment.all.sort_by{|c| c.num_replies}

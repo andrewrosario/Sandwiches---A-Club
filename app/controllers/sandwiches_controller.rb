@@ -2,7 +2,7 @@ class SandwichesController < ApplicationController
     CATEGORIES = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free']
     
     def index
-        @sandwiches = Sandwich.all
+        @sandwiches = Sandwich.all.sort_by{|s| s.title}
         @categories = CATEGORIES
     end
 
@@ -57,7 +57,7 @@ class SandwichesController < ApplicationController
         @categories = CATEGORIES
         sandwiches_by_search = Sandwich.consolidate_searches(params[:search][:name])
         sandwiches_by_category = Sandwich.restrict_by_category(params[:category])
-        @sandwiches = sandwiches_by_category & sandwiches_by_search
+        @sandwiches = (sandwiches_by_category & sandwiches_by_search).sort_by{|s| s.title}
         render 'index'
     end
 

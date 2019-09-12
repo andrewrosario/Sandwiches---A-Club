@@ -13,7 +13,7 @@
     <nav class="navbar navbar-default bg-secondary">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand text-white" href="#">Sandwich: a Club</a>
+          <%= link_to "Sandwich: a Club", stranger_home_path, {class: "navbar-brand text-white"} %>
         </div>
         <ul class="nav navbar-nav">
           <li><%= link_to 'Home', stranger_home_path, {class: 'text-white'} %></li>
