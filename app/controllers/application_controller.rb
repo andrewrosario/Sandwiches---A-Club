@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
     def must_be_logged_in
       return redirect_to forbidden_path unless logged_in
     end
+
 end

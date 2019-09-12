@@ -7,9 +7,9 @@
         <%= f.label :instructions %>
         <%= f.text_area :instructions %><br>
         <%= f.label :ingredients %><br>
-        <div class='checkbox'>
+        <div class='checkbox row col-12'>
         <% ingredients.each do |i| %>
-        <p> <%= f.label i.name %>:<%= f.check_box :ingredients, { multiple: true, checked: sandwich.ingredients.include?(i) }, i.name, false %> - <%= f.label "Quantity"%><%= f.text_field "quantity[#{i.name}]", value: sandwich.ingredient_quantity(i.id) %></p>
+        <div class= 'col-4'> <%= f.label i.name, {class: 'col-3'} %>:<%= f.check_box :ingredients, { multiple: true, checked: sandwich.ingredients.include?(i), class: 'col-1'}, i.name, false %> - <%= f.text_field "quantity[#{i.name}]", value: sandwich.ingredient_quantity(i.id) %></div>
         <% end %>
         </div>
         <br>

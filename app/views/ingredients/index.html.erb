@@ -10,7 +10,12 @@
 <div class='col-12 container'>
 <ul class="list-unstyled row">
   <% @ingredients.each do |i| %>
-    <li class="list-group-item col-4 border-0"><%= link_to i.name, i %></li>
+    <li class="list-group-item col-2 border-0"><img src=
+    <% if i.ingredient_photo.attached? %>
+        <%= url_for(i.ingredient_photo)%>
+    <% else %>
+        <%= "/assets/#{i.img_url}" %> 
+      <% end %> width="100">  <%= link_to i.name, i %></li>
   <% end %>
 </ul>
 </div>

@@ -13,10 +13,15 @@
     <nav class="navbar navbar-default bg-secondary">
       <div class="container-fluid">
         <div class="navbar-header">
-          <%= link_to "Sandwich: a Club", stranger_home_path, {class: "navbar-brand text-white"} %>
+          <%= link_to "The Sandwich Club", stranger_home_path, {class: "navbar-brand text-white"} %>
         </div>
         <ul class="nav navbar-nav">
-          <li><%= link_to 'Home', stranger_home_path, {class: 'text-white'} %></li>
+          <% if session[:user_id] %>
+            <% user = User.find(session[:user_id]) %>
+            <li class='text-white'><%= link_to 'Profile', user_path(user.username), {class: 'text-white'} %> / <%= link_to 'Logout', logout_path, {class: 'text-white'} %></li>
+          <% else %>
+            <li class='text-white'><%= link_to "Log in", login_path, {class: 'text-white'} %> / <%= link_to "Sign up", new_user_path, {class: 'text-white'} %></li>
+          <% end %>
           <li><%= link_to 'Sandwiches', sandwiches_path, {class: 'text-white'} %></li>
           <li><%= link_to 'Ingredients', ingredients_path, {class: 'text-white'} %></li>
         </ul>
