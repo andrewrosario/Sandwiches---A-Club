@@ -1,8 +1,16 @@
 <h1 class='text-center'>Ingredients</h1>
-<div class='container'>
-<ul>
+<div class='container text-center'>
+    <%= form_tag('/ingredients/search')%>
+    <%= label_tag(:search, 'Search')%>
+    <%= search_field(:search, :name)%><br>
+    <%= label_tag(:search, 'Filter results by')%>
+    <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
+    <%= submit_tag "Search" %>
+</div>
+<div class='col-12 container'>
+<ul class="list-unstyled row">
   <% @ingredients.each do |i| %>
-    <li><h5><%= link_to i.name, i %><h5></li>
+    <li class="list-group-item col-4 border-0"><%= link_to i.name, i %></li>
   <% end %>
 </ul>
 </div>

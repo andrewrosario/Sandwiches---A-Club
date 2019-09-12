@@ -10,10 +10,14 @@
 </div>
 <br>
 <br>
-<div class='container'>
-    <ol>
+<div class='col-12 container'>
+    <ul class="list-unstyled row">
         <% @sandwiches.each do |s| %>
-            <li><h5><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</h5></li>
+            <li class="list-group-item col-4 border-0"><%= link_to s.title, sandwich_path(s) %> - <%= s.average_rating %> stars</li>
         <% end %>
-    </ol>
+    </ul>
+</div>
+
+<div class='container text-center'>
+<button><%= link_to "Contribute a Sandwich", new_sandwich_path, {class: 'text-decoration-none text-dark'} %></button>
 </div>

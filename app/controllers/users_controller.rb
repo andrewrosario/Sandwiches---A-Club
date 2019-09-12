@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        User.destroy(@user)
+        @user.destroy
+        redirect_to stranger_home_path
     end
 
     def home

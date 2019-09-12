@@ -2,7 +2,8 @@ class IngredientsController < ApplicationController
     before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
     before_action :set_type_of, only: [:new, :create]
     def index
-        @ingredients = Ingredient.all
+        @ingredients = Ingredient.all.sort_by{|i| i.name}
+        @categories = ['All', 'Filling', 'Bread', 'Condiment']
     end
 
     def show
@@ -41,6 +42,14 @@ class IngredientsController < ApplicationController
             @ingredient.destroy
             return redirect_to ingredients_path
         end
+    end
+
+    def search
+        @categories = ['All', 'Filling', 'Bread', 'Condiment']
+        ingredients_by_search = Ingredient.name_search(params[:search][:name])
+        ingredients_by_category = Ingredient.restrict_by_category(params[:category])
+        @ingredients = (ingredients_by_category & ingredients_by_search).sort_by{|i| i.name}
+        render 'index'
     end
 
     private

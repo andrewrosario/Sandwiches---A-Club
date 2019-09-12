@@ -11,6 +11,14 @@ class Ingredient < ApplicationRecord
     def downcase_fields
         self.type_of.downcase!
     end
-end
 
+    def self.restrict_by_category(category)
+        category == 'All' ? self.all : self.select{|s| s.type_of == category.downcase}
+    end
+
+    def self.name_search(input)
+        string = "%#{input}%"
+        self.where("name LIKE ?", string)
+    end
+end
 
