@@ -1,28 +1,30 @@
 <%= form_for user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <br>
+<div class='container text-center'>
+  <%= f.label 'Username:' %>
+  <%= f.text_field :username, {class: 'w-100'} %>
+  <br><br>
   <%= f.label :display_name %>
-  <%= f.text_field :display_name %>
-  <br>
+  <%= f.text_field :display_name, {class: 'w-100'} %>
+  <br><br>  
   <%= f.label :password %>
-  <%= f.password_field :password %>
-  <br>
+  <%= f.password_field :password, {class: 'w-100'} %>
+  <br><br>  
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <br>
+  <%= f.password_field :password_confirmation, {class: 'w-100'} %>
+  <br><br> 
   <%= f.label "E-mail address" %>
-  <%= f.text_field :email %> 
-  <br>
+  <%= f.text_field :email, {class: 'w-100'} %> 
+  <br><br> 
   <%= f.label :age %>
-  <%= f.number_field :age %>
+  <%= f.number_field :age, {class: 'w-100'} %>
   <br>
   <%= f.label :bio %>
-  <%= f.text_area :bio %>
-  <br>
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %><br>
+  <%= f.text_area :bio, {class: 'w-100'} %>
+  <br><br>
+  <%= f.label "Upload an Image to be Used as Your Avatar" %>
+  <%= f.file_field :avatar %><br><br>
   <%= f.submit %>
+  </div>
 <% end %>
 
 <% if user.errors.any? %>

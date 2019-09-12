@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <link href="https://fonts.googleapis.com/css?family=Chilanka|Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+
     <title>SandwichesAClub</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,22 +12,24 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default bg-secondary">
-      <div class="container-fluid">
+    <nav class="navbar navbar-default clearfix nav-div">
+      <div class="container w-25 float-left nav-div">
         <div class="navbar-header">
-          <%= link_to "The Sandwich Club", stranger_home_path, {class: "navbar-brand text-white"} %>
+          <%= link_to image_tag("/assets/logo.png", {width: '175px', id: 'logo'}) , stranger_home_path, {class: "navbar-brand text-white"} %>
         </div>
-        <ul class="nav navbar-nav">
+      </div>
+      <div class="float-right" >
           <% if session[:user_id] %>
             <% user = User.find(session[:user_id]) %>
-            <li class='text-white'><%= link_to 'Profile', user_path(user.username), {class: 'text-white'} %> / <%= link_to 'Logout', logout_path, {class: 'text-white'} %></li>
+            <div class='float-right'><%= link_to 'Logout', logout_path %></div>
+            <div class='float-right mr-3'><%= link_to 'Profile', user_path(user.username) %></div>
           <% else %>
-            <li class='text-white'><%= link_to "Log in", login_path, {class: 'text-white'} %> / <%= link_to "Sign up", new_user_path, {class: 'text-white'} %></li>
+            <div class='float-right'><%= link_to "Log in", login_path %></div>
+            <div class='float-right mr-3'><%= link_to "Sign up", new_user_path %></div>
           <% end %>
-          <li><%= link_to 'Sandwiches', sandwiches_path, {class: 'text-white'} %></li>
-          <li><%= link_to 'Ingredients', ingredients_path, {class: 'text-white'} %></li>
-        </ul>
-      </div>
+          <div class='float-right mr-3'><%= link_to 'Sandwiches', sandwiches_path %></div>
+          <div class='float-right mr-3'><%= link_to 'Ingredients', ingredients_path %></div>
+        </div>
     </nav>
     <div>
     <p> </p>

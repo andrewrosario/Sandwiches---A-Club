@@ -1,6 +1,6 @@
 <div class='text-center'>
-    <h2>Average Rating: <%= @sandwich.average_rating%><br>
-    <img src=
+    <h2>Average Rating: <%= @sandwich.average_rating%><br><br>
+    <img class='rounded-corners' src=
     <% if @sandwich.sandwich_photo.attached? %>
         <%= url_for(@sandwich.sandwich_photo) %> 
     <% else %>
