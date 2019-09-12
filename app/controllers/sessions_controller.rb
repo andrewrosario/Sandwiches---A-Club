@@ -3,6 +3,10 @@ class SessionsController < ApplicationController
     end
     def create
       user = User.find_by(username: params[:user][:username])
+      if user.is_deleted?
+        flash[:message] = "This user has been deleted."
+        return redirect_to login_path
+      end
       authenticated = user.try(:authenticate, params[:user][:password])
       unless authenticated
         flash[:message] = "Incorrect username or password."

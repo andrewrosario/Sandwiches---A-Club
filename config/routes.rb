@@ -21,6 +21,10 @@ Rails.application.routes.draw do
   get '/stats', to: 'application#stats', as: 'stats'
   post '/add_ingredient', to: 'sandwiches#add_ingredient', as: 'add_ingredient'
 
+  get '/403', to: 'errors#forbidden', as: 'forbidden'
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#server_error'
+
   resources :photos
 
 end

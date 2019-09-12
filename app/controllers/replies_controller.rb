@@ -1,7 +1,11 @@
 class RepliesController < ApplicationController
     def create
         # "reply"=>{"user_id"=>"1", "comment_id"=>"5", "content"=>"help"}
-        Reply.create(reply_params)
+        if !(logged_in)
+            flash[:message] = "You must be logged in to reply."
+        else
+            Reply.create(reply_params)
+        end
         sandwich = Comment.find(params[:reply][:comment_id]).sandwich
         redirect_to sandwich_path(sandwich)
     end

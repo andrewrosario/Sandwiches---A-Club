@@ -1,5 +1,6 @@
 class SandwichesController < ApplicationController
     CATEGORIES = ['All', 'Vegan', 'Vegetarian', 'Gluten-Free']
+    before_action :must_be_logged_in, only: [:new, :edit, :destroy, :add_ingredient]
     
     def index
         @sandwiches = Sandwich.all.sort_by{|s| s.title}

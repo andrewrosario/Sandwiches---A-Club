@@ -68,3 +68,7 @@
     <br><h3>Leave a Comment:</h3>
     <%= render partial: '/comments/form', locals: {sandwich: @sandwich} %>
 </div>
+
+<div class='container'>
+  <h3><%= flash[:message] %></h3>
+</div>

@@ -4,7 +4,11 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(comment_params)
+        if !(logged_in)
+            flash[:message] = "You must be logged in to comment."
+        else
+            @comment = Comment.create(comment_params)
+        end
         redirect_to sandwich_path(params[:sandwich_id])
     end
 
