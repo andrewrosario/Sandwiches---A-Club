@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show, :edit, :update, :destroy, :sandwiches]
     before_action :must_be_logged_in, only: [:show, :edit, :update, :destroy, :home]
     def index
       @users = User.all
@@ -37,6 +37,13 @@ class UsersController < ApplicationController
     def home
         @user = current_user
         @sandwich = Sandwich.all.sample
+        user_sandwiches_by_rating = @user.sandwiches.sort_by{|sandwich| sandwich.average_rating}
+        @top_sandwich = user_sandwiches_by_rating.last
+        @bottom_sandwich = user_sandwiches_by_rating.first
+    end
+
+    def sandwiches
+        @sandwiches = @user.sandwiches
     end
 
     private

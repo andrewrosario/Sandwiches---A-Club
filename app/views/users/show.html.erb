@@ -11,6 +11,7 @@
 <h3>Join date: <%= @user.created_at.strftime("%F") %></h3> 
 <h3>Bio: </h3>
 <p><%= @user.bio %></p>
+<p><%= link_to "#{@user.username}'s sandwiches", user_sandwich_path(@user.username) %></p>
 <% if @user.id == session[:user_id] %>
     <%= link_to "Edit profile", edit_user_path(@user.username) %>
     <%= link_to "Delete account", user_path(@user.username), method: :delete, data: {confirm: "Are you sure? We'll miss you!"}%>
