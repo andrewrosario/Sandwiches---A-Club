@@ -1,44 +1,55 @@
 <script>
-function toggleHidden(id) {
-  var x = document.getElementById(id);
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+    function toggleHidden(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
 </script>
 
 <div class='text-center container shadow'><h1><%= @sandwich.title %></h1>
 <% if @sandwich.user.id == session[:user_id] %>
     <p><%= link_to "Delete this Sandwich", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %></p>
-    <p><%= link_to "Edit this Sandwich", edit_sandwich_path(@sandwich) %></p>
+    <p><%= link_to "Edit this Sandwich", edit_sandwich_path(@sandwich) %>
 <%end%>
-<%= render 'details'%>
-<div><p class='text-white'> . </p></div>
+<%= render 'details'%><br>
 </div>
 
 <div class='container'>
-    <h2 class='text-center'>Comments:</h2>
+    <% if !@sandwich.comments.empty? %>
+        <h2 class='text-center'>Comments:</h2>
+    <% end %>
     <%@sandwich.comments.each do |com|%>
     <div>
         <% if !com.content.empty? %>
-            <h4><%= com.title%></h4>
-            <h5>Rating: <%=com.rating%><h5>
-            <div class='bg-light'>
-                <p><%= com.user.display_name %>, commented at: <%= com.created_at %></p>
-                <p><%= com.content %></p>
-                <% if com.user_id == session[:user_id] %>
-                    <%= link_to "Delete Comment", comment_path(comment_id: com.id, sandwich_id: @sandwich.id), method: :delete, data: {confirm: "Are you sure?"}%>
-                <% end %>
-            </div>
-        <%end%>
+        <% if com.user.is_deleted == true %>
+            <% name = 'Inactive User'%>
+        <% else %>
+            <% name = com.user.display_name %>
+        <% end %>
+        <h4><%= com.title%></h4>
+        <h5>Rating: <%=com.rating%><h5>
+        <div class='bg-light'>
+            <p><%= name %>, commented at: <%= com.created_at %></p>
+            <p><%= com.content %></p>
+            <% if com.user_id == session[:user_id] %>
+                <%= link_to "Delete Comment", comment_path(comment_id: com.id, sandwich_id: @sandwich.id), method: :delete, data: {confirm: "Are you sure?"}%>
+            <% end %>
+        </div>
+    <%end%>
         <% if !com.replies.empty? %>
             <h4>Replies:</h4>
         <% end %>
         <%com.replies.each do |r|%>
+            <% if r.user.is_deleted == true %>
+                <% name = 'Inactive User'%>
+            <% else %>
+                <% name = r.user.display_name %>
+            <% end %>
         <div>
-            <p><%=r.user.display_name %>, replied at: <%= r.created_at %></p>
+            <p><%= name %>, replied at: <%= r.created_at %></p>
             <p><%= r.content %></p>
             <% if r.user.id == session[:user_id] %>
                 <%= link_to "Delete Reply", reply_path(reply_id: r.id, sandwich_id: @sandwich.id), method: :delete, data: {confirm: "Are you sure?"}%>
@@ -54,6 +65,6 @@ function toggleHidden(id) {
 </div>
 
 <div class='text-center'>
-    <h3>Leave a Comment:</h3>
+    <br><h3>Leave a Comment:</h3>
     <%= render partial: '/comments/form', locals: {sandwich: @sandwich} %>
 </div>
