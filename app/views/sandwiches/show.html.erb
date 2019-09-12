@@ -10,9 +10,9 @@
 </script>
 
 <div class='text-center container shadow'><h1><%= @sandwich.title %></h1>
+    <h3>By: <%=link_to @sandwich.user.display_name, user_path(@sandwich.user.username) %></h3>
 <% if @sandwich.user.id == session[:user_id] %>
-    <p><%= link_to "Delete this Sandwich", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %></p>
-    <p><%= link_to "Edit this Sandwich", edit_sandwich_path(@sandwich) %>
+    <p><%= link_to "Delete this Sandwich", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %> - <%= link_to "Edit this Sandwich", edit_sandwich_path(@sandwich) %>
 <%end%>
 <%= render 'details'%><br>
 </div>
