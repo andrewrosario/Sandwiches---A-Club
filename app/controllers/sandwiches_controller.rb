@@ -15,9 +15,7 @@ class SandwichesController < ApplicationController
         user = User.find(params[:sandwich][:user_id])
         sandwich.user = user
         sandwich.save
-        # byebug
         if !sandwich.errors.full_messages.empty?
-            # byebug
             flash[:error] = sandwich.errors.full_messages[0]
             return redirect_to new_sandwich_path
         end

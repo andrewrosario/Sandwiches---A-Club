@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy, :show], param: :username
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get '/ingredients/search', to: 'ingredients#search'
+  post '/ingredients/search', to: 'ingredients#search'
   post '/sandwiches/search', to: 'sandwiches#search'
   
   root 'static#home', as: 'stranger_home'

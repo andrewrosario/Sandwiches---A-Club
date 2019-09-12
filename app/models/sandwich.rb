@@ -109,6 +109,4 @@ class Sandwich < ApplicationRecord
     def self.highest_rated
         Sandwich.max_by{|s| s.average_rating}
     end
-
-
 end

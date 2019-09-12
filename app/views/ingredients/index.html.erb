@@ -1,4 +1,12 @@
 <h1 class='text-center'>Ingredients</h1>
+<div class='container text-center'>
+    <%= form_tag('/ingredients/search')%>
+    <%= label_tag(:search, 'Search')%>
+    <%= search_field(:search, :name)%><br>
+    <%= label_tag(:search, 'Filter results by')%>
+    <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
+    <%= submit_tag "Search" %>
+</div>
 <div class='container'>
 <ul>
   <% @ingredients.each do |i| %>
