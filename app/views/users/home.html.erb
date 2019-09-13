@@ -1,6 +1,7 @@
 <h1 class="text-center">Welcome, <%= @user.username %>!</h1>
 <br>
 <br>
+<% if @top_sandwich && @bottom_sandwich %>
 <div class="container">
 <div class="row">
 <div class="col d-inline-block">
@@ -32,3 +33,21 @@
 </div>
 </div>
 </div>
+<% else %>
+<div class="container">
+<div class="row">
+<div class="col d-inline-block">
+<p>Sandwich of the moment: <%= link_to @sandwich.title, @sandwich %></p>
+<img src=
+    <% if @sandwich.sandwich_photo.attached? %>
+        <%= url_for(@sandwich.sandwich_photo)%>
+    <% else %>
+        <%= "/assets/#{@sandwich.img_url}" %> 
+      <% end %> width="300">
+</div>
+<div class="col d-inline-block">
+<p>You don't seem to have any sandwiches yet. Maybe you'd like to <%= link_to "make one", new_sandwich_path %>?</p>
+</div>
+</div>
+</div>
+<% end %>
