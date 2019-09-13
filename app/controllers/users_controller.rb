@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     def destroy
         @user.is_deleted = true
         @user.save
-        redirect_to stranger_home_path
+        redirect_to logout_path
     end
 
     def home

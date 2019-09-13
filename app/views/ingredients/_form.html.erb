@@ -1,11 +1,9 @@
-<div>
+<div class='container shadow text-center mt-3 pt-4 pb-4'>
   <%= form_for ingredient do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name, {class: 'w-50'} %><br>
     <%= f.label :type_of %>
-    <%= f.select :type_of, @categories, include_blank: true %><br>
-    <%= f.label :img_url %>
-    <%= f.text_field :img_url %><br>
+    <%= f.select :type_of, categories, include_blank: true %><br>
     <%= f.label "Does it have meat?" %>
     <%= f.check_box :is_meat %>
     <%= f.label "Does it contain either dairy or egg?" %>
