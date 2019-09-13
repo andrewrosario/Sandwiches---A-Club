@@ -1,6 +1,7 @@
 <div class='text-center'>
     <h1><%= @ingredient.name %></h1>
-    <h2><%= @ingredient.type_of%></h1>
+    <h2><%= @ingredient.type_of%></h2>
+    <h3><%= @ingredient.dietary_info%></h3>
     <img src=
         <% if @ingredient.ingredient_photo.attached? %>
             <%= url_for(@ingredient.ingredient_photo) %> 

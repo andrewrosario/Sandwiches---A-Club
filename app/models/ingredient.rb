@@ -20,5 +20,17 @@ class Ingredient < ApplicationRecord
         string = "%#{input}%"
         self.where("name LIKE ?", string)
     end
+
+    def is_vegan
+        self.is_meat && self.is_dairy_or_egg
+    end
+
+    def dietary_info
+        dietary_info = []
+        dietary_info << "Vegetarian" unless self.is_meat
+        dietary_info << "Vegan" if self.is_vegan
+        dietary_info << "Gluten-free" if self.is_gluten_free
+        dietary_info.join(", ")
+    end
 end
 

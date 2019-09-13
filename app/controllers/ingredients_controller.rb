@@ -12,7 +12,7 @@ class IngredientsController < ApplicationController
 
     def new
         @ingredient = Ingredient.new
-
+        @categories = %w(bread filling condiment) 
     end
 
     def create
@@ -25,6 +25,7 @@ class IngredientsController < ApplicationController
     end
 
     def edit
+        @categories = %w(bread filling condiment) 
     end
 
     def update
