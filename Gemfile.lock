@@ -119,6 +119,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0904)
     mimemagic (0.3.3)
+    mini_magick (4.9.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.8.5)
@@ -294,6 +295,7 @@ DEPENDENCIES
   jquery-rails (>= 3.1.0)
   json (>= 1.8.1)
   listen (>= 3.0.5, < 3.2)
+  mini_magick
   minitest (~> 5.8.0)
   minitest-reporters (~> 1.0.5)
   paperclip (~> 6.1)

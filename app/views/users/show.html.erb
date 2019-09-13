@@ -1,20 +1,20 @@
-<div class='text-center'>
-<h1><%= @user.username %></h1>
-<h2>aka <%= @user.display_name %></h2>
-<img src=
-    <% if @user.avatar.attached? %>
-        <%= url_for(@user.avatar)%>
-    <% else %>
-        <%= "/assets/#{@user.img_url}" %> 
-    <% end %> width="200">
-<h3>Age: <%= @user.age %></h3>
-<h3>Join date: <%= @user.created_at.strftime("%F") %></h3> 
-<h3>Bio: </h3>
-<p><%= @user.bio %></p>
-<p><%= link_to "#{@user.username}'s sandwiches", user_sandwich_path(@user.username) %></p>
-<% if @user.id == session[:user_id] %>
-    <%= link_to "Edit profile", edit_user_path(@user.username) %>
-    <%= link_to "Delete account", user_path(@user.username), method: :delete, data: {confirm: "Are you sure? We'll miss you!"}%>
-<% end %>
+<div class='text-center col-6' id='user-profile'>
+    <h1><%= @user.username %></h1>
+    <h2>aka <%= @user.display_name %></h2>
+    <img src=
+        <% if @user.avatar.attached? %>
+            <%= url_for(@user.avatar)%>
+        <% else %>
+            <%= "/assets/#{@user.img_url}" %> 
+        <% end %> width="200">
+    <h3>Age: <%= @user.age %></h3>
+    <h4>Club Member Since: <%= @user.created_at.strftime('%b. %d, %Y') %></h4> 
+    <h3>Bio: </h3>
+    <p><%= @user.bio %></p>
+    <h2 class='mb-5'><%= link_to "#{@user.username}'s sandwiches", user_sandwich_path(@user.username) %></h2>
+    <% if @user.id == session[:user_id] %>
+        <h4 class='w-25 d-inline-block'><%= link_to "Edit profile", edit_user_path(@user.username) %></h4>
+        <h4 class='w-25 d-inline-block'><%= link_to "Delete account", user_path(@user.username), method: :delete, data: {confirm: "Are you sure? We'll miss you!"}%></h4>
+    <% end %>
 </div>
 
