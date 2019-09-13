@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default clearfix nav-div">
+    <nav class="navbar navbar-default clearfix nav-div mb-5">
       <div class="container w-25 float-left nav-div">
         <div class="navbar-header">
           <%= link_to image_tag("/assets/logo.png", {width: '200px', id: 'logo'}) , stranger_home_path, {class: "navbar-brand text-white"} %>
@@ -33,7 +33,6 @@
         </div>
     </nav>
     <div>
-    <p> </p>
     <div>
     <%= yield %>
   </body>

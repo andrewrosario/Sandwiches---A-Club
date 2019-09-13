@@ -25,7 +25,8 @@
 }
 
 .navbar {
-    background-color: #F9F7D7;
+    // background-color: #F9F7D7;
+    background-color: #FA8483;
 }
 
 .float-right a {
@@ -35,9 +36,15 @@
     font-size: 20px
 }
 
-body {
+body, .list-group-item {
     font-family: 'Open Sans Condensed', sans-serif;
+    background: #F9F7D7;
 }
+
+.shadow {
+    background: white;
+}
+
 
 .round {
     border-radius: 50%;
@@ -67,4 +74,18 @@ body {
 
 #session {
     background: #F9F7D7;
+}
+
+.comment_form {
+    height: 300px;
+}
+
+#user-profile, .content-box {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.com-ital {
+    background: #E6E7E7
+;
 }

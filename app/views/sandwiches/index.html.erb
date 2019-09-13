@@ -10,17 +10,17 @@
 </div>
 <br>
 <br>
-<div class='col-12 container'>
+<div class='col-10 container mt-5'>
     <ul class="list-unstyled row">
         <% @sandwiches.each do |s| %>
-        <li class="list-group-item col-2 border-0"> 
+        <li class="list-group-item col-sm-6 col-md-4 col-lg-2 border-0">
             <figure class='text-center'>
             <img class='round' src=
             <% if s.sandwich_photo.attached? %>
                 <%= url_for(s.sandwich_photo)%>
             <% else %>
                 <%= "/assets/#{s.img_url}" %> 
-            <% end %> width="100">
+            <% end %> width="100" height='100'>
             <figcaption><%= link_to s.title, sandwich_path(s) %> <br> <%= s.average_rating %> stars</figcaption>
             </figure>
             </li>

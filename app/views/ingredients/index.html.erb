@@ -7,17 +7,17 @@
     <%= select_tag('category', options_for_select(@categories.map{ |c| [c,c] }))%>
     <%= submit_tag "Search", {class: 'w-25'} %>
 </div>
-<div class='col-12 container'>
+<div class='col-10 container mt-5'>
 <ul class="list-unstyled row align-items-baseline">
   <% @ingredients.each do |i| %>
-    <li class="list-group-item col-sm-6 col-md-4 col-lg-2 col-xl-1 border-0">
+    <li class="list-group-item col-sm-6 col-md-4 col-lg-2 border-0">
     <figure class='text-center'>
     <img class='round' src=
     <% if i.ingredient_photo.attached? %>
         <%= url_for(i.ingredient_photo)%>
     <% else %>
         <%= "/assets/#{i.img_url}" %> 
-    <% end %> width="100">
+    <% end %> width="100" height='100'>
     <figcaption><%= link_to i.name, i %></figcaption>
     </figure>
     </li>
