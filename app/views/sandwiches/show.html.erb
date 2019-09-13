@@ -9,7 +9,7 @@
     }
 </script>
 
-<div class='text-center container shadow mb-5'><h1><%= @sandwich.title %></h1>
+<div id='sandwich-information' class='text-center container shadow mb-5'><h1><%= @sandwich.title %></h1>
     <h3>By: <%=link_to @sandwich.user.display_name, user_path(@sandwich.user.username) %></h3>
 <% if @sandwich.user.id == session[:user_id] %>
     <p><%= link_to "Delete this Sandwich", sandwich_path(@sandwich), :data => {:confirm => "You sure?", :method => "delete"} %> - <%= link_to "Edit this Sandwich", edit_sandwich_path(@sandwich) %>
@@ -28,27 +28,27 @@
     </div>
 </div>
 
-<div class='container align-content-center'>
+<div id='comment-container' class='container align-content-center mb-5'>
     <% if !@sandwich.comments.empty? %>
         <h2 class='text-center'>Comments:</h2>
     <% end %>
     <%@sandwich.comments.each do |com|%>
-    <div class='shadow p-3 w-75 text-center content-box'>
+    <div id='one-single-comment' class='shadow p-3 w-75 text-center content-box mb-3'>
         <% if !com.content.empty? %>
-        <% if com.user.is_deleted == true %>
-            <% name = 'Inactive User'%>
-        <% else %>
-            <% name = com.user.display_name %>
-        <% end %>
-        <h4><%= com.title%></h4>
-        <h5>Rating: <%=com.rating%> - <%= name %>, commented at: <%= com.created_at %><h5>
-        <div class='com-ital'>
-            <p class='p-3 font-italic'><%= com.content %></p>
-        </div>
-        <% if com.user_id == session[:user_id] %>
-            <%= link_to "Delete Comment", comment_path(comment_id: com.id, sandwich_id: @sandwich.id), method: :delete, data: {confirm: "Are you sure?"}%>
-        <% end %>
-    <%end%>
+            <% if com.user.is_deleted == true %>
+                <% name = 'Inactive User'%>
+            <% else %>
+                <% name = com.user.display_name %>
+            <% end %>
+            <h4 class='font-italic'><%= com.title%></h4>
+            <h6>Rating: <%=com.rating%> - <%= name %>, commented at: <%= com.created_at %><h6>
+            <div class='com-ital'>
+                <p class='p-3 font-italic'><%= com.content %></p>
+            </div>
+            <% if com.user_id == session[:user_id] %>
+                <%= link_to "Delete Comment", comment_path(comment_id: com.id, sandwich_id: @sandwich.id), method: :delete, data: {confirm: "Are you sure?"}%>
+            <% end %>
+        <%end%>
         <% if !com.replies.empty? %>
             <h4>Replies:</h4>
         <% end %>
@@ -58,19 +58,24 @@
             <% else %>
                 <% name = r.user.display_name %>
             <% end %>
-        <div>
-            <p><%= name %>, replied at: <%= r.created_at %></p>
-            <p><%= r.content %></p>
+            <div>
+                <p><%= name %>, replied at: <%= r.created_at %></p>
+            </div>
+            <div class='com-ital'>
+                <p class='font-italic'><%= r.content %></p>
+            </div>
             <% if r.user.id == session[:user_id] %>
                 <%= link_to "Delete Reply", reply_path(reply_id: r.id, sandwich_id: @sandwich.id), method: :delete, data: {confirm: "Are you sure?"}%>
             <% end %>
-        </div>
+        
         <% end %>
         <% if !com.content.empty? %>
             <p><button class='mt-2' onclick="toggleHidden(<%= com.id %>)">Reply to this Comment</button></p>
             <div style='display: none' id=<%= com.id %>><%= render partial: '/replies/form', locals: {comment: com} %></div>
         <% end %>
+        
     </div>
     <% end %>
+    </div>
 </div>
 

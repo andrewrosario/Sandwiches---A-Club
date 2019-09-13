@@ -3,10 +3,10 @@
   <%= form_with url: add_ingredient_path, scope: 'ingredient' do |f| %>
       <%= f.hidden_field :sandwich_id, value: sandwich.id %>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'w-50' %>
     <br>
     <%= f.label :quantity %>
-    <%= f.text_field :quantity%>
+    <%= f.text_field :quantity, class: 'w-50'%>
     <br>
     <%= f.label :type_of %>
     <%= f.select :type_of, type_of, include_blank: true %>
@@ -19,7 +19,7 @@
     <%= f.check_box :is_gluten_free %><br>
     <%= f.label :ingredient_photo %>
     <%= f.file_field :ingredient_photo %><br>
-    <%= f.submit %>
+    <%= f.submit class: 'w-25' %>
   <% end %>
   <br>
 </div>

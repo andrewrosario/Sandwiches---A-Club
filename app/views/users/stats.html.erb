@@ -6,12 +6,12 @@
       <h3>Hall of Fame</h3>
       <ul class="list-unstyled">
         <% @hall_of_fame.each do |user| %>
-          <li class="text-center"><%= link_to user.username, user_path(user.username) %><img src=
+          <li class="text-center mt-2"><%= link_to user.username, user_path(user.username) %>      <img src=
             <% if user.avatar.attached? %>
               <%= url_for(user.avatar) %>
             <% else %>
               <%= "/assets/#{user.img_url}" %> 
-            <% end %> width="20"></li>
+            <% end %> width="30"></li>
         <% end %>
       </ul>
     </div>
@@ -19,36 +19,42 @@
       <h3>Hall of Shame</h3>
       <ul class="list-unstyled">
         <% @hall_of_shame.each do |user| %>
-          <li class="text-center"><%= link_to user.username, user_path(user.username) %><img src=
+          <li class="text-center mt-2"><%= link_to user.username, user_path(user.username) %>      <img src=
             <% if user.avatar.attached? %>
               <%= url_for(user.avatar) %>
             <% else %>
               <%= "/assets/#{user.img_url}" %> 
-            <% end %> width="20"></li>
+            <% end %> width="30"></li>
         <% end %>
       </ul>
     </div>
   </div>
-  <div class='row'>
+  <div class='row mt-5'>
     <div class="col-sm">
       <h3>Most popular sandwich</h3>
-      <img class="round" src=
+      <figure>
+      <img class="round m-3" src=
         <% if @highest_rated.sandwich_photo.attached? %>
           <%= url_for(@highest_rated.sandwich_photo)%>
         <% else %>
           <%= "/assets/#{@highest_rated.img_url}" %> 
         <% end %> 
-      width="100">  <%= link_to @highest_rated.title, sandwich_path(@highest_rated) %> - <%= @highest_rated.average_rating %> stars
+      width="200">  
+      <figcaption><%= link_to @highest_rated.title, sandwich_path(@highest_rated) %> - <%= @highest_rated.average_rating %> stars</figcaption>
+      </figure>
     </div>
     <div class="col-sm">
       <h3>Most commented-on sandwich</h3>
-      <img class="round" src=
+      <figure>
+      <img class="round m-3" src=
         <% if @most_commented.sandwich_photo.attached? %>
           <%= url_for(@most_commented.sandwich_photo)%>
         <% else %>
           <%= "/assets/#{@most_commented.img_url}" %> 
         <% end %> 
-      width="100">  <%= link_to @most_commented.title, sandwich_path(@most_commented) %> - <%= @most_commented.average_rating %> stars
+      width="200"> 
+      <figcaption> <%= link_to @most_commented.title, sandwich_path(@most_commented) %> - <%= @most_commented.average_rating %> stars </figcaption>
+      </figure>
     </div>
   </div>
 </div>

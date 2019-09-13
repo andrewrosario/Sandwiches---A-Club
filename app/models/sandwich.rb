@@ -33,7 +33,7 @@ class Sandwich < ApplicationRecord
     end
 
     def is_gluten_free?
-        if self.ingredients.where('is_gluten_free = true').empty?
+        if !self.ingredients.where('is_gluten_free = false').empty?
             return false
         else 
             return true

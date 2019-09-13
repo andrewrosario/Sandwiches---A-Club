@@ -1,11 +1,11 @@
 <div>
     <%= form_with model: sandwich do |f| %>
         <%= f.label :title %>
-        <%= f.text_field :title %><br>
+        <%= f.text_field :title, class: 'w-50' %><br>
         <%= f.label :description %>
-        <%= f.text_area :description %><br>
+        <%= f.text_area :description, class: 'w-50'  %><br>
         <%= f.label :instructions %>
-        <%= f.text_area :instructions %><br>
+        <%= f.text_area :instructions, class: 'w-50'  %><br>
         <%= f.label :ingredients %><br>
         <div class='checkbox row col-12'>
         <% ingredients.each do |i| %>
@@ -13,6 +13,6 @@
         <% end %>
         </div>
         <br>
-        <%= f.submit %>
+        <%= f.submit class: 'w-25' %>
     <% end %>
 <div>

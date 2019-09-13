@@ -1,11 +1,13 @@
-<h1>Edit Sandwich</h1>
+<div class='container'>
+    <h1 class='text-center'>Edit Sandwich</h1>
+</div>
 <div class='text-center'>
     <h1><%= @sandwich.title %></h1>
     <%= render 'details' %>
 </div>
 <br>
 <br>
-<div>
+<div class='text-center'>
     <h4>Modify your Sandwich</h4>
     <%= render partial: '/ingredients/new', locals: {sandwich: @sandwich, type_of: @type_of } %>
     <%= render partial: 'edit', locals: {sandwich: @sandwich, ingredients: @ingredients} %><br>
