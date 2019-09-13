@@ -38,7 +38,6 @@ class UsersController < ApplicationController
         @user = current_user
         @sandwich = Sandwich.all.sample
         user_sandwiches_by_rating = @user.sandwiches.sort_by{|sandwich| sandwich.average_rating}
-        byebug
         @top_sandwich = user_sandwiches_by_rating.last
         @bottom_sandwich = user_sandwiches_by_rating.first
     end
