@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default clearfix nav-div">
+    <nav class="navbar navbar-default clearfix nav-div mb-5">
       <div class="container w-25 float-left nav-div">
         <div class="navbar-header">
           <%= link_to image_tag("/assets/logo.png", {width: '200px', id: 'logo'}) , stranger_home_path, {class: "navbar-brand text-white"} %>
@@ -29,10 +29,10 @@
           <% end %>
           <div class='float-right mr-3'><%= link_to 'Sandwiches', sandwiches_path %></div>
           <div class='float-right mr-3'><%= link_to 'Ingredients', ingredients_path %></div>
+          <div class='float-right mr-3'><%= link_to 'About Us', about_path %></div>
         </div>
     </nav>
     <div>
-    <p> </p>
     <div>
     <%= yield %>
   </body>

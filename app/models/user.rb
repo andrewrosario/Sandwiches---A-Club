@@ -13,6 +13,7 @@ class User < ApplicationRecord
     validates :email, presence: true
     validates :email, uniqueness: true
     validate :no_spaces
+    
     def no_spaces
         errors.add(:username, 'may not contain spaces') if /\s/.match(username)
     end

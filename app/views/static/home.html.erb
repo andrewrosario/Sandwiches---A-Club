@@ -10,7 +10,7 @@
             <% sammy = Sandwich.sort_by_rating[i] %>
     <div class='text-center container float-left d-inline-block w-25 align-bottom'>
     <h4><%=link_to sammy.title, sandwich_path(sammy) %><h4><br>
-    <img src=
+    <img class='rounded-corners' src=
     <% if sammy.sandwich_photo.attached? %>
         <%= url_for(sammy.sandwich_photo) %> 
     <% else %>

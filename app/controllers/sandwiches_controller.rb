@@ -30,7 +30,7 @@ class SandwichesController < ApplicationController
 
     def edit
         @sandwich = Sandwich.find(params[:id])
-        @ingredients = Ingredient.all
+        @ingredients = Ingredient.all.sort_by{|i| i.name}
         @ingredient = Ingredient.new
         @type_of = ['Bread', 'Condiment', 'Filling']
         @categories = CATEGORIES
