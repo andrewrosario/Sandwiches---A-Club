@@ -1,6 +1,11 @@
-<%= form_for :user, url: '/login' do |f| %>
-  Username: <%= f.text_field :username %>
-  Password: <%= f.password_field :password %>
-  <%= f.submit "Submit" %>
-<% end %>
-<%= flash[:message] %> 
+<div class='container text-center'>
+  <div id='fade'>
+    <%= image_tag("/assets/logo.png", {width: '900px', id: 'logo'}) %>
+  </div>
+  <%= form_for :user, url: '/login' do |f| %>
+    Username: <%= f.text_field :username %>
+    Password: <%= f.password_field :password %>
+    <%= f.submit "Submit" %>
+  <% end %>
+  <%= flash[:message] %> 
+</div>

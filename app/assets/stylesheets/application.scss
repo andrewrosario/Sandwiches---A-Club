@@ -46,3 +46,25 @@ body {
 .rounded-corners {
     border-radius: 30px
 }
+
+
+#fade { 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    animation: fadeInAnimation ease 6s;
+    animation-iteration-count: 1; 
+    animation-fill-mode: forwards; 
+}
+  
+@keyframes fadeInAnimation { 
+    0% { 
+        opacity: 0; 
+    } 
+    100% { 
+        opacity: 1; 
+     } 
+} 
+
+#session {
+    background: #F9F7D7;
+}
