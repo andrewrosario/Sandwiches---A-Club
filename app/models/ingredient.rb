@@ -22,7 +22,7 @@ class Ingredient < ApplicationRecord
     end
 
     def is_vegan
-        self.is_meat && self.is_dairy_or_egg
+        !(self.is_meat || self.is_dairy_or_egg)
     end
 
     def dietary_info
