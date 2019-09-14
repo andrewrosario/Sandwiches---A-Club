@@ -3,17 +3,20 @@ branch-defaults:
     environment: Sandwiches---A-Club-dev
     group_suffix: null
   aws-deploy:
-    environment: sandwiches
+    environment: Sandwiches---A-Club-dev4
   master:
     environment: sandwiches
 environment-defaults:
+  Sandwiches---A-Club-dev4:
+    branch: null
+    repository: null
   sandwiches:
     branch: null
     repository: null
 global:
   application_name: Sandwiches---A-Club
   branch: null
-  default_ec2_keyname: aws-eb2
+  default_ec2_keyname: aws-eb3
   default_platform: Ruby 2.6 (Passenger Standalone)
   default_region: us-west-2
   include_git_submodules: true
