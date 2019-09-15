@@ -245,7 +245,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.1)
-    temple (0.8.1)
+    temple (0.8.2)
     term-ansicolor (1.7.1)
       tins (~> 1.0)
     terrapin (0.6.0)
