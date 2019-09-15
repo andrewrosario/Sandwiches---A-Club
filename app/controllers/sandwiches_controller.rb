@@ -80,3 +80,4 @@ class SandwichesController < ApplicationController
         params.require(:sandwich).permit(:title, :instructions, :description, :img_url, :ingredients, :sandwich_photo)
     end
 end
+
