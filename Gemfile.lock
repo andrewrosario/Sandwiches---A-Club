@@ -103,6 +103,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.2.0)
+    libv8 (7.3.492.27.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -122,6 +123,8 @@ GEM
     mini_magick (4.9.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
+    mini_racer (0.2.6)
+      libv8 (>= 6.9.411)
     minitest (5.8.5)
     minitest-reporters (1.0.20)
       ansi
@@ -296,6 +299,7 @@ DEPENDENCIES
   json (>= 1.8.1)
   listen (>= 3.0.5, < 3.2)
   mini_magick
+  mini_racer
   minitest (~> 5.8.0)
   minitest-reporters (~> 1.0.5)
   paperclip (~> 6.1)

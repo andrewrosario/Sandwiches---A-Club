@@ -10,6 +10,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eb-fix-npm": "^1.2.6",
     "webpack-dev-server": "^3.8.0"
   }
 }

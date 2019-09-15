@@ -29,6 +29,7 @@ gem 'bootstrap'
 gem 'paperclip', '~> 6.1'
 gem 'bootstrap-sass'
 gem "mini_magick"
+gem 'mini_racer'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
