@@ -26,7 +26,6 @@ gem 'autoprefixer-rails', '>= 9.1.0'
 gem 'popper_js', '>= 1.14.3', '< 2'
 gem 'sassc-rails', '>= 2.0.0'
 gem 'bootstrap'
-gem 'paperclip', '~> 6.1'
 gem 'bootstrap-sass'
 gem "mini_magick"
 gem 'mini_racer'
