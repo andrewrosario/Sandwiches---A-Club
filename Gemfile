@@ -6,7 +6,7 @@ ruby '2.6.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'pg'
 gem 'autoprefixer-rails', '>= 9.1.0'
 gem 'popper_js', '>= 1.14.3', '< 2'
 gem 'sassc-rails', '>= 2.0.0'
@@ -29,6 +29,7 @@ gem 'bootstrap'
 gem 'bootstrap-sass'
 gem "mini_magick"
 gem 'mini_racer'
+gem 'taps'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -39,6 +40,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do

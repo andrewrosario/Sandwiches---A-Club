@@ -18,5 +18,7 @@ Perhaps you want to just create an ingredient without adding it to a sandwich. T
 ## Commenting on a sandwich
 Commenting on a sandwich is a cinch as well. Head to the page of the sandwich you want to comment on (you can find it easier with our search form), and comment in the form below the sandwich.
 
+## Try it for yourself at https://sandwich-club.herokuapp.com/
+
 ## Credits
 This site was made by Andy Rosario and Anaïs Ahmed, as a project at the Flation School web development course. Fergie designed the logo for the site.
